@@ -22,6 +22,9 @@
     if (self.image) {
         type |= CatapultTargetTypeImage;
     }
+    if (self.imageURL) {
+        type |= CatapultTargetTypeImageURL;
+    }
     return type;
 }
 @end

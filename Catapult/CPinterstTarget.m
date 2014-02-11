@@ -12,6 +12,7 @@
 @implementation CPinterstTarget
 
 static NSString *_pinterestId;
+static CPinterstTarget *_shared;
 
 + (CatapultTargetType)targetType{
     return CatapultTargetTypeURL | CatapultTargetTypeText | CatapultTargetTypeImageURL;
@@ -23,6 +24,10 @@ static NSString *_pinterestId;
 
 + (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
     if (_pinterestId) {
+        
+        _shared = [[CPinterstTarget alloc] init];
+        _shared.complete = complete;
+        
         Pinterest *pinterest = [[Pinterest alloc] initWithClientId:_pinterestId];
         [pinterest createPinWithImageURL:payload.imageURL
                                sourceURL:payload.url
@@ -45,7 +50,26 @@ static NSString *_pinterestId;
     return [NSURL URLWithString:@"pinterest://"];
 }
 
++ (NSDictionary*)parseURLParams:(NSString *)query {
+    NSArray *pairs = [query componentsSeparatedByString:@"&"];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    for (NSString *pair in pairs) {
+        NSArray *kv = [pair componentsSeparatedByString:@"="];
+        NSString *val =
+        [kv[1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        params[kv[0]] = val;
+    }
+    return params;
+}
+
 + (void)handleURL:(NSURL *)url fromSourceApplication:(NSString *)source{
-    
+    if ([source isEqualToString:@"pinterest"] && _shared && _shared.complete) {
+        NSDictionary *params = [self parseURLParams:url.query];
+        if ([[params objectForKey:@"pin_success"] isEqualToString:@"0"]) {
+            _shared.complete(NO);
+        }else{
+            _shared.complete(YES);
+        }
+    }
 }
 @end
