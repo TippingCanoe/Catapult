@@ -14,7 +14,7 @@
 
 
 + (CatapultTargetType)targetType{
-    return CatapultTargetTypeText | CatapultTargetTypeURL;
+    return CatapultTargetTypeText;
 }
 
 + (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
@@ -22,6 +22,7 @@
     params.link = payload.url;
     params.name = [options objectForKey:kCFacebookTargetTitle];
     params.caption = [options objectForKey:kCFacebookTargetSubtitle];
+    params.picture = payload.imageURL;
     params.description = payload.text;
     
     // If the Facebook app is installed and we can present the share dialog
@@ -60,6 +61,9 @@
         }
         if (params.description) {
             [paramDictionary setObject:params.description forKey:@"description"];
+        }
+        if (params.picture) {
+            [paramDictionary setObject:params.picture forKey:@"picture"];
         }
         
         // Show the feed dialog

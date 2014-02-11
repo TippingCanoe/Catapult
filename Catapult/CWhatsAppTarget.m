@@ -11,7 +11,7 @@
 
 @implementation CWhatsAppTarget
 + (CatapultTargetType)targetType{
-    return CatapultTargetTypeText | CatapultTargetTypeURL;
+    return CatapultTargetTypeText;
 }
 
 + (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{

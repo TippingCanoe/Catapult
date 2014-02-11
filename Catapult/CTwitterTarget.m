@@ -11,7 +11,7 @@
 
 @implementation CTwitterTarget
 + (CatapultTargetType)targetType{
-    return CatapultTargetTypeText | CatapultTargetTypeURL | CatapultTargetTypeImage;
+    return CatapultTargetTypeText;
 }
 
 + (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{

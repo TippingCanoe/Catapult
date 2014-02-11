@@ -16,7 +16,8 @@ typedef NS_OPTIONS(NSUInteger, CatapultTargetType) {
     CatapultTargetTypeText                = 1 << 0,
     CatapultTargetTypeURL                 = 1 << 1,
     CatapultTargetTypeImage               = 1 << 2,
-    CatapultTargetTypeAll                 = CatapultTargetTypeText | CatapultTargetTypeURL | CatapultTargetTypeImage
+    CatapultTargetTypeImageURL            = 1 << 3,
+    CatapultTargetTypeAll                 = CatapultTargetTypeText | CatapultTargetTypeURL | CatapultTargetTypeImage | CatapultTargetTypeImageURL
 };
 
 
@@ -25,14 +26,7 @@ typedef NS_OPTIONS(NSUInteger, CatapultTargetType) {
 @property (nonatomic,strong) NSString *text;
 @property (nonatomic,strong) NSURL *url;
 @property (nonatomic,strong) UIImage *image;
-
-- (instancetype)initWithText:(NSString *)text;
-- (instancetype)initWithURL:(NSURL *)url;
-- (instancetype)initWithImage:(UIImage *)image;
-- (instancetype)initWithText:(NSString *)text andURL:(NSURL *)url;
-- (instancetype)initWithText:(NSString *)text andImage:(UIImage *)image;
-- (instancetype)initWithURL:(NSURL *)url andImage:(UIImage *)image;
-- (instancetype)initWithText:(NSString *)text andURL:(NSURL *)url andImage:(UIImage *)image;
+@property (nonatomic,strong) NSURL *imageURL;
 
 - (CatapultTargetType)targetType;
 

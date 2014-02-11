@@ -14,7 +14,7 @@
 static NSString *_pinterestId;
 
 + (CatapultTargetType)targetType{
-    return CatapultTargetTypeURL | CatapultTargetTypeText;
+    return CatapultTargetTypeURL | CatapultTargetTypeText | CatapultTargetTypeImageURL;
 }
 
 + (void)setPinterestID:(NSString *)string{
@@ -24,7 +24,7 @@ static NSString *_pinterestId;
 + (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
     if (_pinterestId) {
         Pinterest *pinterest = [[Pinterest alloc] initWithClientId:_pinterestId];
-        [pinterest createPinWithImageURL:nil
+        [pinterest createPinWithImageURL:payload.imageURL
                                sourceURL:payload.url
                              description:payload.text];
         if (complete) {

@@ -10,55 +10,7 @@
 #import <OHActionSheet.h>
 
 @implementation CatapultPayload
-- (instancetype)initWithText:(NSString *)text{
-    self = [super init];
-    if (self) {
-        self.text = text;
-    }
-    return self;
-}
-- (instancetype)initWithURL:(NSURL *)url{
-    self = [super init];
-    if (self) {
-        self.url = url;
-    }
-    return self;
-}
-- (instancetype)initWithImage:(UIImage *)image{
-    self = [super init];
-    if (self) {
-        self.image = image;
-    }
-    return self;
-}
-- (instancetype)initWithText:(NSString *)text andURL:(NSURL *)url{
-    self = [self initWithText:text];
-    if (self) {
-        self.url = url;
-    }
-    return self;
-}
-- (instancetype)initWithText:(NSString *)text andImage:(UIImage *)image{
-    self = [self initWithText:text];
-    if (self) {
-        self.image = image;
-    }
-    return self;
-}
-- (instancetype)initWithURL:(NSURL *)url andImage:(UIImage *)image{
-    self = [self initWithURL:url];
-    if (self) {
-        self.image = image;
-    }
-    return self;
-}
-- (instancetype)initWithText:(NSString *)text andURL:(NSURL *)url andImage:(UIImage *)image{
-    self = [self initWithText:text andURL:url];
-    if (self) {
-        self.image = image;
-    }
-    return self;
-}
+
 - (CatapultTargetType)targetType{
     CatapultTargetType type = 0;
     if (self.text) {
@@ -112,7 +64,7 @@ static Catapult *_shared;
 - (NSArray *)targetsFortargetType:(CatapultTargetType)targetType{
     NSMutableArray *array = [[NSMutableArray alloc] init];
     for (NSObject<CatapultTarget> *target in targetArray) {
-        if ([target.class targetType] & targetType) {
+        if ((([target.class targetType] ^ targetType) & targetType) || targetType == [target.class targetType]) {
             [array addObject:target];
         }
     }
