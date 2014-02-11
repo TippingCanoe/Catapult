@@ -7,7 +7,7 @@
 //
 
 #import "Catapult.h"
-#import <UIActionSheet+Blocks.h>
+#import <OHActionSheet.h>
 
 @implementation CatapultPayload
 - (instancetype)initWithText:(NSString *)text{
@@ -149,18 +149,30 @@ static Catapult *_shared;
     
     NSArray *targets = [self targetsFortargetType:payload.targetType];
     
-    [UIActionSheet presentOnView:viewController.view withTitle:@"" otherButtons:[self.class targetNameArrayFortargetArray:targets] onCancel:^(UIActionSheet *sheet) {
-        if (complete) {
-            complete(NO,nil);
-        }
-    } onClickedButton:^(UIActionSheet *sheet, NSUInteger index) {
-        NSObject<CatapultTarget> *target = [targets objectAtIndex:index];
-        [target.class launchPayload:payload withOptions:dictionary andComplete:^(BOOL success){
-            if (complete) {
-                complete(success,target.class);
-            }
-        }];
-    }];
+    [OHActionSheet showSheetInView:viewController.view
+                             title:@""
+                 cancelButtonTitle:@""
+            destructiveButtonTitle:@""
+                 otherButtonTitles:[self.class targetNameArrayFortargetArray:targets]
+                        completion:^(OHActionSheet *sheet, NSInteger buttonIndex)
+     {
+         if (buttonIndex == sheet.cancelButtonIndex) {
+             if (complete) {
+                 complete(NO,nil);
+             }
+         } else if (buttonIndex == sheet.destructiveButtonIndex) {
+             if (complete) {
+                 complete(NO,nil);
+             }
+         } else {
+             NSObject<CatapultTarget> *target = [targets objectAtIndex:buttonIndex];
+             [target.class launchPayload:payload withOptions:dictionary andComplete:^(BOOL success){
+                 if (complete) {
+                     complete(success,target.class);
+                 }
+             }];
+         }
+     }];
 }
 @end
 
