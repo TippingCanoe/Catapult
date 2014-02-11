@@ -21,6 +21,7 @@ static CEmailTarget *_shared;
         }
     }
     controller.delegate = nil;
+    [[controller presentingViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 
 + (CatapultTargetType)targetType{
@@ -48,7 +49,7 @@ static CEmailTarget *_shared;
 }
 
 + (NSString *)targetName{
-    return NSLocalizedString(@"SMS", nil);
+    return NSLocalizedString(@"Email", nil);
 }
 
 + (BOOL)canHandle{

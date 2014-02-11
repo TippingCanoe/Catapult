@@ -21,6 +21,7 @@ static CSMSTarget *_shared;
         }
     }
     controller.delegate = nil;
+    [[controller presentingViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 
 + (CatapultTargetType)targetType{
