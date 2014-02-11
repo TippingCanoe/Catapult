@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-typedef NS_OPTIONS(NSUInteger, CatapultServiceType) {
-    CatapultServiceTypeText                = 0,
-    CatapultServiceTypeURL                 = 1 << 0,
-    CatapultServiceTypeImage               = 1 << 1,
-    CatapultServiceTypeAll                 = CatapultServiceTypeText & CatapultServiceTypeURL & CatapultServiceTypeImage
+typedef NS_OPTIONS(NSUInteger, CatapultTargetType) {
+    CatapultTargetTypeText                = 0,
+    CatapultTargetTypeURL                 = 1 << 0,
+    CatapultTargetTypeImage               = 1 << 1,
+    CatapultTargetTypeAll                 = CatapultTargetTypeText & CatapultTargetTypeURL & CatapultTargetTypeImage
 };
 
 
@@ -31,12 +31,14 @@ typedef NS_OPTIONS(NSUInteger, CatapultServiceType) {
 - (instancetype)initWithURL:(NSURL *)url andImage:(UIImage *)image;
 - (instancetype)initWithText:(NSString *)text andURL:(NSURL *)url andImage:(UIImage *)image;
 
+- (CatapultTargetType)targetType;
+
 @end
 
-@protocol CatapultService <NSObject>
-+ (CatapultServiceType)serviceType;
+@protocol CatapultTarget <NSObject>
++ (CatapultTargetType)targetType;
 + (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options andComplete:(void(^)(BOOL success))complete;
-+ (NSString *)serviceName;
++ (NSString *)targetName;
 + (NSURL *)appURL;
 @end
 
@@ -44,11 +46,10 @@ typedef NS_OPTIONS(NSUInteger, CatapultServiceType) {
 
 + (instancetype)shared;
 
-- (BOOL)registerService:(Class<CatapultService>)service;
+- (BOOL)registerTarget:(Class<CatapultTarget>)target;
 
-- (void)takeAimAtServiceType:(CatapultServiceType)serviceType
-                 withPayload:(CatapultPayload*)payload
+- (void)takeAimAtWithPayload:(CatapultPayload*)payload
           fromViewController:(UIViewController *)viewController
                  withOptions:(NSDictionary *)dictionary
-                 andComplete:(void(^)(BOOL success, Class<CatapultService> selectedService))complete;
+                 andComplete:(void(^)(BOOL success, Class<CatapultTarget> selectedtarget))complete;
 @end

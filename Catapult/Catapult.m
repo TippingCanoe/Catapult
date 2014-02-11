@@ -59,12 +59,25 @@
     }
     return self;
 }
+- (CatapultTargetType)targetType{
+    CatapultTargetType type = 0;
+    if (self.text) {
+        type &= CatapultTargetTypeText;
+    }
+    if (self.url) {
+        type &= CatapultTargetTypeURL;
+    }
+    if (self.image) {
+        type &= CatapultTargetTypeImage;
+    }
+    return type;
+}
 @end
 
 @interface Catapult (private)
-@property (nonatomic,strong) NSMutableArray *_textServices;
-@property (nonatomic,strong) NSMutableArray *_urlServices;
-@property (nonatomic,strong) NSMutableArray *_imageServices;
+@property (nonatomic,strong) NSMutableArray *_texttargets;
+@property (nonatomic,strong) NSMutableArray *_urltargets;
+@property (nonatomic,strong) NSMutableArray *_imagetargets;
 @end
 
 @implementation Catapult
@@ -81,77 +94,76 @@ static Catapult *_shared;
 - (id)init{
     self = [super init];
     if (self) {
-        self._textServices = [[NSMutableArray alloc] init];
-        self._urlServices = [[NSMutableArray alloc] init];
-        self._imageServices = [[NSMutableArray alloc] init];
+        self._texttargets = [[NSMutableArray alloc] init];
+        self._urltargets = [[NSMutableArray alloc] init];
+        self._imagetargets = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
-- (BOOL)registerService:(Class<CatapultService>)service{
-    NSObject<CatapultService> *serviceObject = (NSObject<CatapultService>*)service;
-    CatapultServiceType serviceType = [serviceObject.class serviceType];
+- (BOOL)registerTarget:(Class<CatapultTarget>)target{
+    NSObject<CatapultTarget> *targetObject = (NSObject<CatapultTarget>*)target;
+    CatapultTargetType targetType = [targetObject.class targetType];
     
     BOOL isValid = YES;
     
-    if ([serviceObject.class appURL]) {
-        isValid = [[UIApplication sharedApplication] canOpenURL:[serviceObject.class appURL]];
+    if ([targetObject.class appURL]) {
+        isValid = [[UIApplication sharedApplication] canOpenURL:[targetObject.class appURL]];
     }
     
     if (isValid) {
-        if (serviceType &= CatapultServiceTypeText) {
-            [self._textServices addObject:service];
+        if (targetType &= CatapultTargetTypeText) {
+            [self._texttargets addObject:target];
         }
-        if (serviceType &= CatapultServiceTypeURL) {
-            [self._urlServices addObject:service];
+        if (targetType &= CatapultTargetTypeURL) {
+            [self._urltargets addObject:target];
         }
-        if (serviceType &= CatapultServiceTypeImage) {
-            [self._imageServices addObject:service];
+        if (targetType &= CatapultTargetTypeImage) {
+            [self._imagetargets addObject:target];
         }
     }
     
     return isValid;
 }
 
-- (NSArray *)servicesForServiceType:(CatapultServiceType)serviceType{
+- (NSArray *)targetsFortargetType:(CatapultTargetType)targetType{
     NSMutableArray *array = [[NSMutableArray alloc] init];
-    if (serviceType &= CatapultServiceTypeText) {
-        [array addObjectsFromArray:self._textServices];
+    if (targetType &= CatapultTargetTypeText) {
+        [array addObjectsFromArray:self._texttargets];
     }
-    if (serviceType &= CatapultServiceTypeURL) {
-        [array addObjectsFromArray:self._urlServices];
+    if (targetType &= CatapultTargetTypeURL) {
+        [array addObjectsFromArray:self._urltargets];
     }
-    if (serviceType &= CatapultServiceTypeImage) {
-        [array addObjectsFromArray:self._imageServices];
+    if (targetType &= CatapultTargetTypeImage) {
+        [array addObjectsFromArray:self._imagetargets];
     }
     return array;
 }
 
-+ (NSArray *)serviceNameArrayForServiceArray:(NSArray *)services{
++ (NSArray *)targetNameArrayFortargetArray:(NSArray *)targets{
     NSMutableArray *names = [[NSMutableArray alloc] init];
-    for (NSObject<CatapultService> *service in services) {
-        [names addObject:[service.class serviceName]];
+    for (NSObject<CatapultTarget> *target in targets) {
+        [names addObject:[target.class targetName]];
     }
     return names;
 }
 
-- (void)takeAimAtServiceType:(CatapultServiceType)serviceType
-                 withPayload:(CatapultPayload*)payload
+- (void)takeAimAtWithPayload:(CatapultPayload*)payload
           fromViewController:(UIViewController *)viewController
                  withOptions:(NSDictionary *)dictionary
-                 andComplete:(void(^)(BOOL success, Class<CatapultService> selectedService))complete{
+                 andComplete:(void(^)(BOOL success, Class<CatapultTarget> selectedtarget))complete{
     
-    NSArray *services = [self servicesForServiceType:serviceType];
+    NSArray *targets = [self targetsFortargetType:payload.targetType];
     
-    [UIActionSheet presentOnView:viewController.view withTitle:@"" otherButtons:[self.class serviceNameArrayForServiceArray:services] onCancel:^(UIActionSheet *sheet) {
+    [UIActionSheet presentOnView:viewController.view withTitle:@"" otherButtons:[self.class targetNameArrayFortargetArray:targets] onCancel:^(UIActionSheet *sheet) {
         if (complete) {
             complete(NO,nil);
         }
     } onClickedButton:^(UIActionSheet *sheet, NSUInteger index) {
-        NSObject<CatapultService> *service = [services objectAtIndex:index];
-        [service.class launchPayload:payload withOptions:dictionary andComplete:^(BOOL success){
+        NSObject<CatapultTarget> *target = [targets objectAtIndex:index];
+        [target.class launchPayload:payload withOptions:dictionary andComplete:^(BOOL success){
             if (complete) {
-                complete(success,service.class);
+                complete(success,target.class);
             }
         }];
     }];
