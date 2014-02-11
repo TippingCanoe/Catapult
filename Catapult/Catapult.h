@@ -40,7 +40,7 @@ typedef NS_OPTIONS(NSUInteger, CatapultTargetType) {
 
 @protocol CatapultTarget <NSObject>
 + (CatapultTargetType)targetType;
-+ (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options andComplete:(void(^)(BOOL success))complete;
++ (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete;
 + (NSString *)targetName;
 + (NSURL *)appURL;
 + (void)handleURL:(NSURL *)url fromSourceApplication:(NSString *)source;

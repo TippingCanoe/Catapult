@@ -13,7 +13,7 @@
     return CatapultTargetTypeURL | CatapultTargetTypeText;
 }
 
-+ (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options andComplete:(void(^)(BOOL success))complete{
++ (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
     if (complete) {
         complete(NO);
     }

@@ -150,10 +150,9 @@ static Catapult *_shared;
                  complete(NO,nil);
              }
          } else {
-             buttonIndex--;
              NSObject<CatapultTarget> *target = [targets objectAtIndex:buttonIndex];
              lastTarget = target.class;
-             [target.class launchPayload:payload withOptions:dictionary andComplete:^(BOOL success){
+             [target.class launchPayload:payload withOptions:dictionary fromViewController:viewController andComplete:^(BOOL success){
                  if (complete) {
                      complete(success,target.class);
                  }

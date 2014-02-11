@@ -17,8 +17,7 @@
     return CatapultTargetTypeText | CatapultTargetTypeURL;
 }
 
-+ (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options andComplete:(void(^)(BOOL success))complete{
-
++ (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
     FBShareDialogParams *params = [[FBShareDialogParams alloc] init];
     params.link = payload.url;
     params.name = [options objectForKey:kCFacebookTargetTitle];
