@@ -24,6 +24,7 @@
 		84C50BDA18A9F14C003619F4 /* CPinterestTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50BD918A9F14C003619F4 /* CPinterestTarget.m */; };
 		84C50BDD18A9F18D003619F4 /* CSMSTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50BDC18A9F18D003619F4 /* CSMSTarget.m */; };
 		84C50BE018A9F1C5003619F4 /* CTumblrTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50BDF18A9F1C5003619F4 /* CTumblrTarget.m */; };
+		84CCF63718AAE00C00A6B46F /* CGmailTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CCF63618AAE00C00A6B46F /* CGmailTarget.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,8 @@
 		84C50BDC18A9F18D003619F4 /* CSMSTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSMSTarget.m; sourceTree = "<group>"; };
 		84C50BDE18A9F1C5003619F4 /* CTumblrTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTumblrTarget.h; sourceTree = "<group>"; };
 		84C50BDF18A9F1C5003619F4 /* CTumblrTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTumblrTarget.m; sourceTree = "<group>"; };
+		84CCF63518AAE00C00A6B46F /* CGmailTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGmailTarget.h; sourceTree = "<group>"; };
+		84CCF63618AAE00C00A6B46F /* CGmailTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGmailTarget.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +193,8 @@
 				84C50BDF18A9F1C5003619F4 /* CTumblrTarget.m */,
 				84B7ECBB18AAA1AC00A4730A /* CEmailTarget.h */,
 				84B7ECBC18AAA1AC00A4730A /* CEmailTarget.m */,
+				84CCF63518AAE00C00A6B46F /* CGmailTarget.h */,
+				84CCF63618AAE00C00A6B46F /* CGmailTarget.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -313,6 +318,7 @@
 				847DB4F318A9C0B1006A8C8F /* Catapult.m in Sources */,
 				84C50BD418A9F01F003619F4 /* CWhatsAppTarget.m in Sources */,
 				84C50BDA18A9F14C003619F4 /* CPinterestTarget.m in Sources */,
+				84CCF63718AAE00C00A6B46F /* CGmailTarget.m in Sources */,
 				84C50BDD18A9F18D003619F4 /* CSMSTarget.m in Sources */,
 				84B7ECBD18AAA1AC00A4730A /* CEmailTarget.m in Sources */,
 				84C50BE018A9F1C5003619F4 /* CTumblrTarget.m in Sources */,
