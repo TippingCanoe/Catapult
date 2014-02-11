@@ -39,7 +39,11 @@
                                               if(error) {
                                                   complete(NO);
                                               } else {
-                                                  complete(YES);
+                                                  if ([[results objectForKey:@"completionGesture"] isEqualToString:@"cancel"]) {
+                                                      complete(NO);
+                                                  }else{
+                                                      complete(YES);
+                                                  }
                                               }
                                           }
                                       }];

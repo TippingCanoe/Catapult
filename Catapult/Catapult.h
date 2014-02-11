@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#define kCatapultTitle @"kCatapultTitle"
+#define kCatapultCancel @"kCatapultCancel"
+
 typedef NS_OPTIONS(NSUInteger, CatapultTargetType) {
     CatapultTargetTypeText                = 1 << 0,
     CatapultTargetTypeURL                 = 1 << 1,
@@ -44,9 +47,7 @@ typedef NS_OPTIONS(NSUInteger, CatapultTargetType) {
 @end
 
 @interface Catapult : NSObject{
-    NSMutableArray *texttargets;
-    NSMutableArray *urltargets;
-    NSMutableArray *imagetargets;
+    NSMutableArray *targetArray;
     
     Class<CatapultTarget> lastTarget;
 }

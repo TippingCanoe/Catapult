@@ -88,16 +88,13 @@ static Catapult *_shared;
 - (id)init{
     self = [super init];
     if (self) {
-        texttargets = [[NSMutableArray alloc] init];
-        urltargets = [[NSMutableArray alloc] init];
-        imagetargets = [[NSMutableArray alloc] init];
+        targetArray = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
 - (BOOL)registerTarget:(Class<CatapultTarget>)target{
     NSObject<CatapultTarget> *targetObject = (NSObject<CatapultTarget>*)target;
-    CatapultTargetType targetType = [targetObject.class targetType];
     
     BOOL isValid = YES;
     
@@ -106,15 +103,7 @@ static Catapult *_shared;
     }
     
     if (isValid) {
-        if (targetType & CatapultTargetTypeText) {
-            [texttargets addObject:target];
-        }
-        if (targetType & CatapultTargetTypeURL) {
-            [urltargets addObject:target];
-        }
-        if (targetType & CatapultTargetTypeImage) {
-            [imagetargets addObject:target];
-        }
+        [targetArray addObject:target];
     }
     
     return isValid;
@@ -122,14 +111,10 @@ static Catapult *_shared;
 
 - (NSArray *)targetsFortargetType:(CatapultTargetType)targetType{
     NSMutableArray *array = [[NSMutableArray alloc] init];
-    if (targetType & CatapultTargetTypeText) {
-        [array addObjectsFromArray:texttargets];
-    }
-    if (targetType & CatapultTargetTypeURL) {
-        [array addObjectsFromArray:urltargets];
-    }
-    if (targetType & CatapultTargetTypeImage) {
-        [array addObjectsFromArray:imagetargets];
+    for (NSObject<CatapultTarget> *target in targetArray) {
+        if ([target.class targetType] & targetType) {
+            [array addObject:target];
+        }
     }
     return array;
 }
@@ -150,9 +135,9 @@ static Catapult *_shared;
     NSArray *targets = [self targetsFortargetType:payload.targetType];
     
     [OHActionSheet showSheetInView:viewController.view
-                             title:@""
-                 cancelButtonTitle:@""
-            destructiveButtonTitle:@""
+                             title:[dictionary objectForKey:kCatapultTitle]?[dictionary objectForKey:kCatapultTitle]:NSLocalizedString(@"Share", nil)
+                 cancelButtonTitle:[dictionary objectForKey:kCatapultCancel]?[dictionary objectForKey:kCatapultCancel]:NSLocalizedString(@"Cancel", nil)
+            destructiveButtonTitle:nil
                  otherButtonTitles:[self.class targetNameArrayFortargetArray:targets]
                         completion:^(OHActionSheet *sheet, NSInteger buttonIndex)
      {
@@ -165,6 +150,7 @@ static Catapult *_shared;
                  complete(NO,nil);
              }
          } else {
+             buttonIndex--;
              NSObject<CatapultTarget> *target = [targets objectAtIndex:buttonIndex];
              lastTarget = target.class;
              [target.class launchPayload:payload withOptions:dictionary andComplete:^(BOOL success){
