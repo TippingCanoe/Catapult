@@ -21,8 +21,7 @@
 		84C50BCE18A9EF67003619F4 /* CFacebookTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50BCD18A9EF67003619F4 /* CFacebookTarget.m */; };
 		84C50BD118A9EFF3003619F4 /* CTwitterTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50BD018A9EFF3003619F4 /* CTwitterTarget.m */; };
 		84C50BD418A9F01F003619F4 /* CWhatsAppTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50BD318A9F01F003619F4 /* CWhatsAppTarget.m */; };
-		84C50BD718A9F0BE003619F4 /* CReadingListTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50BD618A9F0BE003619F4 /* CReadingListTarget.m */; };
-		84C50BDA18A9F14C003619F4 /* CPinterstTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50BD918A9F14C003619F4 /* CPinterstTarget.m */; };
+		84C50BDA18A9F14C003619F4 /* CPinterestTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50BD918A9F14C003619F4 /* CPinterestTarget.m */; };
 		84C50BDD18A9F18D003619F4 /* CSMSTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50BDC18A9F18D003619F4 /* CSMSTarget.m */; };
 		84C50BE018A9F1C5003619F4 /* CTumblrTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50BDF18A9F1C5003619F4 /* CTumblrTarget.m */; };
 /* End PBXBuildFile section */
@@ -73,10 +72,8 @@
 		84C50BD018A9EFF3003619F4 /* CTwitterTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTwitterTarget.m; sourceTree = "<group>"; };
 		84C50BD218A9F01F003619F4 /* CWhatsAppTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWhatsAppTarget.h; sourceTree = "<group>"; };
 		84C50BD318A9F01F003619F4 /* CWhatsAppTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWhatsAppTarget.m; sourceTree = "<group>"; };
-		84C50BD518A9F0BE003619F4 /* CReadingListTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CReadingListTarget.h; sourceTree = "<group>"; };
-		84C50BD618A9F0BE003619F4 /* CReadingListTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CReadingListTarget.m; sourceTree = "<group>"; };
-		84C50BD818A9F14C003619F4 /* CPinterstTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPinterstTarget.h; sourceTree = "<group>"; };
-		84C50BD918A9F14C003619F4 /* CPinterstTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPinterstTarget.m; sourceTree = "<group>"; };
+		84C50BD818A9F14C003619F4 /* CPinterestTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPinterestTarget.h; sourceTree = "<group>"; };
+		84C50BD918A9F14C003619F4 /* CPinterestTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPinterestTarget.m; sourceTree = "<group>"; };
 		84C50BDB18A9F18D003619F4 /* CSMSTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSMSTarget.h; sourceTree = "<group>"; };
 		84C50BDC18A9F18D003619F4 /* CSMSTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSMSTarget.m; sourceTree = "<group>"; };
 		84C50BDE18A9F1C5003619F4 /* CTumblrTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTumblrTarget.h; sourceTree = "<group>"; };
@@ -185,10 +182,8 @@
 				84C50BD018A9EFF3003619F4 /* CTwitterTarget.m */,
 				84C50BD218A9F01F003619F4 /* CWhatsAppTarget.h */,
 				84C50BD318A9F01F003619F4 /* CWhatsAppTarget.m */,
-				84C50BD518A9F0BE003619F4 /* CReadingListTarget.h */,
-				84C50BD618A9F0BE003619F4 /* CReadingListTarget.m */,
-				84C50BD818A9F14C003619F4 /* CPinterstTarget.h */,
-				84C50BD918A9F14C003619F4 /* CPinterstTarget.m */,
+				84C50BD818A9F14C003619F4 /* CPinterestTarget.h */,
+				84C50BD918A9F14C003619F4 /* CPinterestTarget.m */,
 				84C50BDB18A9F18D003619F4 /* CSMSTarget.h */,
 				84C50BDC18A9F18D003619F4 /* CSMSTarget.m */,
 				84C50BDE18A9F1C5003619F4 /* CTumblrTarget.h */,
@@ -317,9 +312,8 @@
 			files = (
 				847DB4F318A9C0B1006A8C8F /* Catapult.m in Sources */,
 				84C50BD418A9F01F003619F4 /* CWhatsAppTarget.m in Sources */,
-				84C50BDA18A9F14C003619F4 /* CPinterstTarget.m in Sources */,
+				84C50BDA18A9F14C003619F4 /* CPinterestTarget.m in Sources */,
 				84C50BDD18A9F18D003619F4 /* CSMSTarget.m in Sources */,
-				84C50BD718A9F0BE003619F4 /* CReadingListTarget.m in Sources */,
 				84B7ECBD18AAA1AC00A4730A /* CEmailTarget.m in Sources */,
 				84C50BE018A9F1C5003619F4 /* CTumblrTarget.m in Sources */,
 				84C50BD118A9EFF3003619F4 /* CTwitterTarget.m in Sources */,

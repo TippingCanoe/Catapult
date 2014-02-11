@@ -47,8 +47,8 @@
     return NSLocalizedString(@"Twitter", nil);
 }
 
-+ (NSURL *)appURL{
-    return nil;
++ (BOOL)canHandle{
+    return YES;
 }
 
 + (void)handleURL:(NSURL *)url fromSourceApplication:(NSString *)source{

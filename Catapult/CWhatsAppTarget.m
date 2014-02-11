@@ -31,8 +31,8 @@
     return NSLocalizedString(@"WhatsApp", nil);
 }
 
-+ (NSURL *)appURL{
-    return [NSURL URLWithString:@"whatsapp://"];
++ (BOOL)canHandle{
+    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"whatsapp://"]];
 }
 
 + (void)handleURL:(NSURL *)url fromSourceApplication:(NSString *)source{

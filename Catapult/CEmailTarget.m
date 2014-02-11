@@ -9,22 +9,50 @@
 #import "CEmailTarget.h"
 
 @implementation CEmailTarget
+
+static CEmailTarget *_shared;
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error{
+    if (_complete) {
+        if (result == MFMailComposeResultSent || result == MFMailComposeResultSaved) {
+            _complete(YES);
+        }else{
+            _complete(NO);
+        }
+    }
+    controller.delegate = nil;
+}
+
 + (CatapultTargetType)targetType{
-    return CatapultTargetTypeURL | CatapultTargetTypeText;
+    return CatapultTargetTypeText;
 }
 
 + (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
-    if (complete) {
-        complete(NO);
+    
+    _shared = [[CEmailTarget alloc] init];
+    _shared.complete = complete;
+    
+    NSString *body = payload.text;
+    if (payload.url) {
+        body = [body stringByAppendingFormat:@" %@",payload.url.absoluteString];
     }
+    
+    MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
+    [[mailer navigationBar] setTintColor:[UIColor blackColor]];
+    mailer.mailComposeDelegate = _shared;
+    mailer.modalPresentationStyle = UIModalPresentationPageSheet;
+    [mailer setSubject:payload.text];
+    
+    [mailer setMessageBody:body isHTML:NO];
+    [vc presentViewController:mailer animated:YES completion:nil];
 }
 
 + (NSString *)targetName{
-    return NSLocalizedString(@"Email", nil);
+    return NSLocalizedString(@"SMS", nil);
 }
 
-+ (NSURL *)appURL{
-    return nil;
++ (BOOL)canHandle{
+    return [MFMailComposeViewController canSendMail];
 }
 
 + (void)handleURL:(NSURL *)url fromSourceApplication:(NSString *)source{

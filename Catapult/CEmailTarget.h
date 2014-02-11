@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "Catapult.h"
+#import <MessageUI/MessageUI.h>
 
-@interface CEmailTarget : NSObject <CatapultTarget>
+@interface CEmailTarget : NSObject <CatapultTarget,MFMailComposeViewControllerDelegate>
+@property (nonatomic,copy) void(^complete)(BOOL complete);
 
 @end

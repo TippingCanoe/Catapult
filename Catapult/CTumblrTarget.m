@@ -35,8 +35,8 @@ static CTumblrTarget *_shared;
     return NSLocalizedString(@"Tumblr", nil);
 }
 
-+ (NSURL *)appURL{
-    return [NSURL URLWithString:@"tumblr://"];
++ (BOOL)canHandle{
+    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tumblr://"]];
 }
 
 + (void)setSuccessURL:(NSURL *)success{

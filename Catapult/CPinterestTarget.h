@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Catapult.h"
 
-@interface CPinterstTarget : NSObject <CatapultTarget>
+@interface CPinterestTarget : NSObject <CatapultTarget>
 @property (nonatomic,copy) void(^complete)(BOOL complete);
 + (void)setPinterestID:(NSString *)string;
 @end

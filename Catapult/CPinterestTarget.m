@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 TippingCanoe. All rights reserved.
 //
 
-#import "CPinterstTarget.h"
+#import "CPinterestTarget.h"
 #import <Pinterest.h>
 
-@implementation CPinterstTarget
+@implementation CPinterestTarget
 
 static NSString *_pinterestId;
-static CPinterstTarget *_shared;
+static CPinterestTarget *_shared;
 
 + (CatapultTargetType)targetType{
     return CatapultTargetTypeURL | CatapultTargetTypeText | CatapultTargetTypeImageURL;
@@ -25,16 +25,13 @@ static CPinterstTarget *_shared;
 + (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
     if (_pinterestId) {
         
-        _shared = [[CPinterstTarget alloc] init];
+        _shared = [[CPinterestTarget alloc] init];
         _shared.complete = complete;
         
         Pinterest *pinterest = [[Pinterest alloc] initWithClientId:_pinterestId];
         [pinterest createPinWithImageURL:payload.imageURL
                                sourceURL:payload.url
                              description:payload.text];
-        if (complete) {
-            complete(YES);
-        }
     }else{
         if (complete) {
             complete(NO);
@@ -46,8 +43,8 @@ static CPinterstTarget *_shared;
     return NSLocalizedString(@"Pinterest", nil);
 }
 
-+ (NSURL *)appURL{
-    return [NSURL URLWithString:@"pinterest://"];
++ (BOOL)canHandle{
+    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"pinterest://"]];
 }
 
 + (NSDictionary*)parseURLParams:(NSString *)query {

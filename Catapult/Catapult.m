@@ -48,14 +48,8 @@ static Catapult *_shared;
     return self;
 }
 
-- (BOOL)registerTarget:(Class<CatapultTarget>)target{
-    NSObject<CatapultTarget> *targetObject = (NSObject<CatapultTarget>*)target;
-    
-    BOOL isValid = YES;
-    
-    if ([targetObject.class appURL]) {
-        isValid = [[UIApplication sharedApplication] canOpenURL:[targetObject.class appURL]];
-    }
+- (BOOL)registerTarget:(Class<CatapultTarget>)target{    
+    BOOL isValid = [target canHandle];
     
     if (isValid) {
         [targetArray addObject:target];
@@ -82,7 +76,7 @@ static Catapult *_shared;
     return names;
 }
 
-- (void)takeAimAtWithPayload:(CatapultPayload*)payload
+- (void)takeAimWithPayload:(CatapultPayload*)payload
           fromViewController:(UIViewController *)viewController
                  withOptions:(NSDictionary *)dictionary
                  andComplete:(void(^)(BOOL success, Class<CatapultTarget> selectedtarget))complete{

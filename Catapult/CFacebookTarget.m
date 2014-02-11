@@ -104,12 +104,12 @@
     return params;
 }
 
-+ (NSString *)targetName{
-    return NSLocalizedString(@"Facebook", nil);
++ (BOOL)canHandle{
+    return YES;
 }
 
-+ (NSURL *)appURL{
-    return nil;
++ (NSString *)targetName{
+    return NSLocalizedString(@"Facebook", nil);
 }
 
 + (void)handleURL:(NSURL *)url fromSourceApplication:(NSString *)source{

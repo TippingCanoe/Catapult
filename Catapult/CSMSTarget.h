@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "Catapult.h"
+#import <MessageUI/MessageUI.h>
 
-@interface CSMSTarget : NSObject <CatapultTarget>
-
+@interface CSMSTarget : NSObject <CatapultTarget,MFMessageComposeViewControllerDelegate>
+@property (nonatomic,copy) void(^complete)(BOOL complete);
 @end
