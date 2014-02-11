@@ -10,10 +10,10 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_OPTIONS(NSUInteger, CatapultTargetType) {
-    CatapultTargetTypeText                = 0,
-    CatapultTargetTypeURL                 = 1 << 0,
-    CatapultTargetTypeImage               = 1 << 1,
-    CatapultTargetTypeAll                 = CatapultTargetTypeText & CatapultTargetTypeURL & CatapultTargetTypeImage
+    CatapultTargetTypeText                = 1 << 0,
+    CatapultTargetTypeURL                 = 1 << 1,
+    CatapultTargetTypeImage               = 1 << 2,
+    CatapultTargetTypeAll                 = CatapultTargetTypeText | CatapultTargetTypeURL | CatapultTargetTypeImage
 };
 
 
@@ -42,7 +42,11 @@ typedef NS_OPTIONS(NSUInteger, CatapultTargetType) {
 + (NSURL *)appURL;
 @end
 
-@interface Catapult : NSObject
+@interface Catapult : NSObject{
+    NSMutableArray *texttargets;
+    NSMutableArray *urltargets;
+    NSMutableArray *imagetargets;
+}
 
 + (instancetype)shared;
 

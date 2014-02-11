@@ -10,7 +10,7 @@
 
 @implementation CSMSTarget
 + (CatapultTargetType)targetType{
-    return CatapultTargetTypeURL;
+    return CatapultTargetTypeURL | CatapultTargetTypeText;
 }
 
 + (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options andComplete:(void(^)(BOOL success))complete{

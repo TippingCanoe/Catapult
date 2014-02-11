@@ -62,22 +62,16 @@
 - (CatapultTargetType)targetType{
     CatapultTargetType type = 0;
     if (self.text) {
-        type &= CatapultTargetTypeText;
+        type |= CatapultTargetTypeText;
     }
     if (self.url) {
-        type &= CatapultTargetTypeURL;
+        type |= CatapultTargetTypeURL;
     }
     if (self.image) {
-        type &= CatapultTargetTypeImage;
+        type |= CatapultTargetTypeImage;
     }
     return type;
 }
-@end
-
-@interface Catapult (private)
-@property (nonatomic,strong) NSMutableArray *_texttargets;
-@property (nonatomic,strong) NSMutableArray *_urltargets;
-@property (nonatomic,strong) NSMutableArray *_imagetargets;
 @end
 
 @implementation Catapult
@@ -94,9 +88,9 @@ static Catapult *_shared;
 - (id)init{
     self = [super init];
     if (self) {
-        self._texttargets = [[NSMutableArray alloc] init];
-        self._urltargets = [[NSMutableArray alloc] init];
-        self._imagetargets = [[NSMutableArray alloc] init];
+        texttargets = [[NSMutableArray alloc] init];
+        urltargets = [[NSMutableArray alloc] init];
+        imagetargets = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -112,14 +106,14 @@ static Catapult *_shared;
     }
     
     if (isValid) {
-        if (targetType &= CatapultTargetTypeText) {
-            [self._texttargets addObject:target];
+        if (targetType & CatapultTargetTypeText) {
+            [texttargets addObject:target];
         }
-        if (targetType &= CatapultTargetTypeURL) {
-            [self._urltargets addObject:target];
+        if (targetType & CatapultTargetTypeURL) {
+            [urltargets addObject:target];
         }
-        if (targetType &= CatapultTargetTypeImage) {
-            [self._imagetargets addObject:target];
+        if (targetType & CatapultTargetTypeImage) {
+            [imagetargets addObject:target];
         }
     }
     
@@ -128,14 +122,14 @@ static Catapult *_shared;
 
 - (NSArray *)targetsFortargetType:(CatapultTargetType)targetType{
     NSMutableArray *array = [[NSMutableArray alloc] init];
-    if (targetType &= CatapultTargetTypeText) {
-        [array addObjectsFromArray:self._texttargets];
+    if (targetType & CatapultTargetTypeText) {
+        [array addObjectsFromArray:texttargets];
     }
-    if (targetType &= CatapultTargetTypeURL) {
-        [array addObjectsFromArray:self._urltargets];
+    if (targetType & CatapultTargetTypeURL) {
+        [array addObjectsFromArray:urltargets];
     }
-    if (targetType &= CatapultTargetTypeImage) {
-        [array addObjectsFromArray:self._imagetargets];
+    if (targetType & CatapultTargetTypeImage) {
+        [array addObjectsFromArray:imagetargets];
     }
     return array;
 }

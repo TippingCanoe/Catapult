@@ -10,7 +10,7 @@
 
 @implementation CFacebookTarget
 + (CatapultTargetType)targetType{
-    return CatapultTargetTypeText & CatapultTargetTypeURL;
+    return CatapultTargetTypeText | CatapultTargetTypeURL;
 }
 
 + (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options andComplete:(void(^)(BOOL success))complete{
