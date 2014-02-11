@@ -40,12 +40,15 @@ typedef NS_OPTIONS(NSUInteger, CatapultTargetType) {
 + (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options andComplete:(void(^)(BOOL success))complete;
 + (NSString *)targetName;
 + (NSURL *)appURL;
++ (void)handleURL:(NSURL *)url fromSourceApplication:(NSString *)source;
 @end
 
 @interface Catapult : NSObject{
     NSMutableArray *texttargets;
     NSMutableArray *urltargets;
     NSMutableArray *imagetargets;
+    
+    Class<CatapultTarget> lastTarget;
 }
 
 + (instancetype)shared;
@@ -56,4 +59,6 @@ typedef NS_OPTIONS(NSUInteger, CatapultTargetType) {
           fromViewController:(UIViewController *)viewController
                  withOptions:(NSDictionary *)dictionary
                  andComplete:(void(^)(BOOL success, Class<CatapultTarget> selectedtarget))complete;
+
+- (void)handleURL:(NSURL *)url fromSourceApplication:(NSString *)source;
 @end

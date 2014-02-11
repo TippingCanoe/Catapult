@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "Catapult.h"
+#define kCFacebookTargetTitle @"kCFacebookTargetTitle"
+#define kCFacebookTargetSubtitle @"kCFacebookTargetSubtitle"
 
 @interface CFacebookTarget : NSObject <CatapultTarget>
-
+@property (nonatomic,copy) void(^complete)(BOOL complete);
 @end

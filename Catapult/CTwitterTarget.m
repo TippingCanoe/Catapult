@@ -26,4 +26,8 @@
 + (NSURL *)appURL{
     return nil;
 }
+
++ (void)handleURL:(NSURL *)url fromSourceApplication:(NSString *)source{
+    
+}
 @end

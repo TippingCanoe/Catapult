@@ -1,16 +1,16 @@
 //
-//  CWhatsAppService.m
+//  CEmailTarget.m
 //  Catapult
 //
-//  Created by Jeff on 2/10/2014.
+//  Created by Jeff on 2/11/2014.
 //  Copyright (c) 2014 TippingCanoe. All rights reserved.
 //
 
-#import "CWhatsAppTarget.h"
+#import "CEmailTarget.h"
 
-@implementation CWhatsAppTarget
+@implementation CEmailTarget
 + (CatapultTargetType)targetType{
-    return CatapultTargetTypeText | CatapultTargetTypeURL;
+    return CatapultTargetTypeURL | CatapultTargetTypeText;
 }
 
 + (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options andComplete:(void(^)(BOOL success))complete{
@@ -20,11 +20,11 @@
 }
 
 + (NSString *)targetName{
-    return NSLocalizedString(@"WhatsApp", nil);
+    return NSLocalizedString(@"Email", nil);
 }
 
 + (NSURL *)appURL{
-    return [NSURL URLWithString:@"whatsapp://"];
+    return nil;
 }
 
 + (void)handleURL:(NSURL *)url fromSourceApplication:(NSString *)source{

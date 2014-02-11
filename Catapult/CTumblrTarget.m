@@ -24,6 +24,10 @@
 }
 
 + (NSURL *)appURL{
-    return nil;
+    return [NSURL URLWithString:@"tumblr://"];
+}
+
++ (void)handleURL:(NSURL *)url fromSourceApplication:(NSString *)source{
+    
 }
 @end

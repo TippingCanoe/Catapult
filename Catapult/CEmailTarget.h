@@ -1,13 +1,14 @@
 //
-//  CTumblrService.h
+//  CEmailTarget.h
 //  Catapult
 //
-//  Created by Jeff on 2/10/2014.
+//  Created by Jeff on 2/11/2014.
 //  Copyright (c) 2014 TippingCanoe. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "Catapult.h"
 
-@interface CTumblrTarget : NSObject <CatapultTarget>
+@interface CEmailTarget : NSObject <CatapultTarget>
+
 @end

@@ -166,6 +166,7 @@ static Catapult *_shared;
              }
          } else {
              NSObject<CatapultTarget> *target = [targets objectAtIndex:buttonIndex];
+             lastTarget = target.class;
              [target.class launchPayload:payload withOptions:dictionary andComplete:^(BOOL success){
                  if (complete) {
                      complete(success,target.class);
@@ -173,6 +174,12 @@ static Catapult *_shared;
              }];
          }
      }];
+}
+
+- (void)handleURL:(NSURL *)url fromSourceApplication:(NSString *)source{
+    if (lastTarget) {
+        [lastTarget handleURL:url fromSourceApplication:source];
+    }
 }
 @end
 
