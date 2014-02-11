@@ -7,15 +7,33 @@
 //
 
 #import "CPinterstTarget.h"
+#import <Pinterest.h>
 
 @implementation CPinterstTarget
+
+static NSString *_pinterestId;
+
 + (CatapultTargetType)targetType{
-    return CatapultTargetTypeURL;
+    return CatapultTargetTypeURL | CatapultTargetTypeText;
+}
+
++ (void)setPinterestID:(NSString *)string{
+    _pinterestId = string;
 }
 
 + (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
-    if (complete) {
-        complete(NO);
+    if (_pinterestId) {
+        Pinterest *pinterest = [[Pinterest alloc] initWithClientId:_pinterestId];
+        [pinterest createPinWithImageURL:nil
+                               sourceURL:payload.url
+                             description:payload.text];
+        if (complete) {
+            complete(YES);
+        }
+    }else{
+        if (complete) {
+            complete(NO);
+        }
     }
 }
 

@@ -1,16 +1,38 @@
 PODS:
   - Facebook-iOS-SDK (3.12.0)
+  - JXHTTP (1.0.0)
   - NSString-UrlEncode (1.0.0)
   - OHActionSheet (1.0.2)
+  - Pinterest-iOS (2.3)
+  - TMTumblrSDK (1.0.6):
+    - TMTumblrSDK/Activity
+    - TMTumblrSDK/APIClient
+    - TMTumblrSDK/AppClient
+    - TMTumblrSDK/Core
+  - TMTumblrSDK/Activity (1.0.6)
+  - TMTumblrSDK/APIClient (1.0.6):
+    - JXHTTP (= 1.0.0)
+    - TMTumblrSDK/APIClient/Authentication
+  - TMTumblrSDK/APIClient/Authentication (1.0.6):
+    - JXHTTP (= 1.0.0)
+    - TMTumblrSDK/Core
+  - TMTumblrSDK/AppClient (1.0.6):
+    - TMTumblrSDK/Core
+  - TMTumblrSDK/Core (1.0.6)
 
 DEPENDENCIES:
   - Facebook-iOS-SDK (~> 3.12.0)
   - NSString-UrlEncode (~> 1.0.0)
   - OHActionSheet (~> 1.0.2)
+  - Pinterest-iOS (~> 2.3)
+  - TMTumblrSDK (~> 1.0.6)
 
 SPEC CHECKSUMS:
   Facebook-iOS-SDK: c09f7d80db5c48170ff834bc03ebe774c49d1f5b
+  JXHTTP: 04f027e55c252d206cf3fcc2a2bde3914a35d842
   NSString-UrlEncode: 4127390c94abfd81415f3784cb5fbcb54432f356
   OHActionSheet: b58d7d9f1499e7d6711575444cd5bcc043744112
+  Pinterest-iOS: 9c026adbeb8890ad519356f9b95299844293fc04
+  TMTumblrSDK: cc16af8cfc8124926ab202455c1a6c87ff8725b3
 
 COCOAPODS: 0.29.0

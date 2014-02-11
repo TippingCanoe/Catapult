@@ -10,5 +10,5 @@
 #import "Catapult.h"
 
 @interface CPinterstTarget : NSObject <CatapultTarget>
-
++ (void)setPinterestID:(NSString *)string;
 @end
