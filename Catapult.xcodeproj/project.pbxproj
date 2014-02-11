@@ -1,0 +1,475 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0FD3BFF2E0C44C19940033E7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 370672B8813F48E288CCDF01 /* libPods.a */; };
+		847DB4EC18A9C0B1006A8C8F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847DB4EB18A9C0B1006A8C8F /* Foundation.framework */; };
+		847DB4F118A9C0B1006A8C8F /* Catapult.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 847DB4F018A9C0B1006A8C8F /* Catapult.h */; };
+		847DB4F318A9C0B1006A8C8F /* Catapult.m in Sources */ = {isa = PBXBuildFile; fileRef = 847DB4F218A9C0B1006A8C8F /* Catapult.m */; };
+		847DB4FA18A9C0B1006A8C8F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847DB4F918A9C0B1006A8C8F /* XCTest.framework */; };
+		847DB4FB18A9C0B1006A8C8F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847DB4EB18A9C0B1006A8C8F /* Foundation.framework */; };
+		847DB4FD18A9C0B1006A8C8F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847DB4FC18A9C0B1006A8C8F /* UIKit.framework */; };
+		847DB50018A9C0B1006A8C8F /* libCatapult.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 847DB4E818A9C0B1006A8C8F /* libCatapult.a */; };
+		847DB50618A9C0B1006A8C8F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 847DB50418A9C0B1006A8C8F /* InfoPlist.strings */; };
+		847DB50818A9C0B1006A8C8F /* CatapultTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 847DB50718A9C0B1006A8C8F /* CatapultTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		847DB4FE18A9C0B1006A8C8F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 847DB4E018A9C0B1006A8C8F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 847DB4E718A9C0B1006A8C8F;
+			remoteInfo = Catapult;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		847DB4E618A9C0B1006A8C8F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				847DB4F118A9C0B1006A8C8F /* Catapult.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		29955DC8D5314E5CA15B1239 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		370672B8813F48E288CCDF01 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8406B81C18A9D3FF00F48F74 /* Catapult.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Catapult.podspec; sourceTree = "<group>"; };
+		847DB4E818A9C0B1006A8C8F /* libCatapult.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCatapult.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		847DB4EB18A9C0B1006A8C8F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		847DB4EF18A9C0B1006A8C8F /* Catapult-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Catapult-Prefix.pch"; sourceTree = "<group>"; };
+		847DB4F018A9C0B1006A8C8F /* Catapult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Catapult.h; sourceTree = "<group>"; };
+		847DB4F218A9C0B1006A8C8F /* Catapult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Catapult.m; sourceTree = "<group>"; };
+		847DB4F818A9C0B1006A8C8F /* CatapultTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CatapultTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		847DB4F918A9C0B1006A8C8F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		847DB4FC18A9C0B1006A8C8F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		847DB50318A9C0B1006A8C8F /* CatapultTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CatapultTests-Info.plist"; sourceTree = "<group>"; };
+		847DB50518A9C0B1006A8C8F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		847DB50718A9C0B1006A8C8F /* CatapultTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CatapultTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		847DB4E518A9C0B1006A8C8F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				847DB4EC18A9C0B1006A8C8F /* Foundation.framework in Frameworks */,
+				0FD3BFF2E0C44C19940033E7 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		847DB4F518A9C0B1006A8C8F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				847DB4FA18A9C0B1006A8C8F /* XCTest.framework in Frameworks */,
+				847DB50018A9C0B1006A8C8F /* libCatapult.a in Frameworks */,
+				847DB4FD18A9C0B1006A8C8F /* UIKit.framework in Frameworks */,
+				847DB4FB18A9C0B1006A8C8F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		847DB4DF18A9C0B1006A8C8F = {
+			isa = PBXGroup;
+			children = (
+				8406B81C18A9D3FF00F48F74 /* Catapult.podspec */,
+				847DB4ED18A9C0B1006A8C8F /* Catapult */,
+				847DB50118A9C0B1006A8C8F /* CatapultTests */,
+				847DB4EA18A9C0B1006A8C8F /* Frameworks */,
+				847DB4E918A9C0B1006A8C8F /* Products */,
+				29955DC8D5314E5CA15B1239 /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		847DB4E918A9C0B1006A8C8F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				847DB4E818A9C0B1006A8C8F /* libCatapult.a */,
+				847DB4F818A9C0B1006A8C8F /* CatapultTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		847DB4EA18A9C0B1006A8C8F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				847DB4EB18A9C0B1006A8C8F /* Foundation.framework */,
+				847DB4F918A9C0B1006A8C8F /* XCTest.framework */,
+				847DB4FC18A9C0B1006A8C8F /* UIKit.framework */,
+				370672B8813F48E288CCDF01 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		847DB4ED18A9C0B1006A8C8F /* Catapult */ = {
+			isa = PBXGroup;
+			children = (
+				847DB51218A9CD0E006A8C8F /* Services */,
+				847DB4F018A9C0B1006A8C8F /* Catapult.h */,
+				847DB4F218A9C0B1006A8C8F /* Catapult.m */,
+				847DB4EE18A9C0B1006A8C8F /* Supporting Files */,
+			);
+			path = Catapult;
+			sourceTree = "<group>";
+		};
+		847DB4EE18A9C0B1006A8C8F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				847DB4EF18A9C0B1006A8C8F /* Catapult-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		847DB50118A9C0B1006A8C8F /* CatapultTests */ = {
+			isa = PBXGroup;
+			children = (
+				847DB50718A9C0B1006A8C8F /* CatapultTests.m */,
+				847DB50218A9C0B1006A8C8F /* Supporting Files */,
+			);
+			path = CatapultTests;
+			sourceTree = "<group>";
+		};
+		847DB50218A9C0B1006A8C8F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				847DB50318A9C0B1006A8C8F /* CatapultTests-Info.plist */,
+				847DB50418A9C0B1006A8C8F /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		847DB51218A9CD0E006A8C8F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		847DB4E718A9C0B1006A8C8F /* Catapult */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 847DB50B18A9C0B1006A8C8F /* Build configuration list for PBXNativeTarget "Catapult" */;
+			buildPhases = (
+				A02B1D0C2F4A48A3A5BA45BB /* Check Pods Manifest.lock */,
+				847DB4E418A9C0B1006A8C8F /* Sources */,
+				847DB4E518A9C0B1006A8C8F /* Frameworks */,
+				847DB4E618A9C0B1006A8C8F /* CopyFiles */,
+				17F1B3EA8471495C90F26F7C /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Catapult;
+			productName = Catapult;
+			productReference = 847DB4E818A9C0B1006A8C8F /* libCatapult.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		847DB4F718A9C0B1006A8C8F /* CatapultTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 847DB50E18A9C0B1006A8C8F /* Build configuration list for PBXNativeTarget "CatapultTests" */;
+			buildPhases = (
+				847DB4F418A9C0B1006A8C8F /* Sources */,
+				847DB4F518A9C0B1006A8C8F /* Frameworks */,
+				847DB4F618A9C0B1006A8C8F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				847DB4FF18A9C0B1006A8C8F /* PBXTargetDependency */,
+			);
+			name = CatapultTests;
+			productName = CatapultTests;
+			productReference = 847DB4F818A9C0B1006A8C8F /* CatapultTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		847DB4E018A9C0B1006A8C8F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = TippingCanoe;
+			};
+			buildConfigurationList = 847DB4E318A9C0B1006A8C8F /* Build configuration list for PBXProject "Catapult" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 847DB4DF18A9C0B1006A8C8F;
+			productRefGroup = 847DB4E918A9C0B1006A8C8F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				847DB4E718A9C0B1006A8C8F /* Catapult */,
+				847DB4F718A9C0B1006A8C8F /* CatapultTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		847DB4F618A9C0B1006A8C8F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				847DB50618A9C0B1006A8C8F /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		17F1B3EA8471495C90F26F7C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A02B1D0C2F4A48A3A5BA45BB /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		847DB4E418A9C0B1006A8C8F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				847DB4F318A9C0B1006A8C8F /* Catapult.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		847DB4F418A9C0B1006A8C8F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				847DB50818A9C0B1006A8C8F /* CatapultTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		847DB4FF18A9C0B1006A8C8F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 847DB4E718A9C0B1006A8C8F /* Catapult */;
+			targetProxy = 847DB4FE18A9C0B1006A8C8F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		847DB50418A9C0B1006A8C8F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				847DB50518A9C0B1006A8C8F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		847DB50918A9C0B1006A8C8F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		847DB50A18A9C0B1006A8C8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		847DB50C18A9C0B1006A8C8F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29955DC8D5314E5CA15B1239 /* Pods.xcconfig */;
+			buildSettings = {
+				DSTROOT = /tmp/Catapult.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Catapult/Catapult-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		847DB50D18A9C0B1006A8C8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29955DC8D5314E5CA15B1239 /* Pods.xcconfig */;
+			buildSettings = {
+				DSTROOT = /tmp/Catapult.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Catapult/Catapult-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		847DB50F18A9C0B1006A8C8F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Catapult/Catapult-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "CatapultTests/CatapultTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		847DB51018A9C0B1006A8C8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Catapult/Catapult-Prefix.pch";
+				INFOPLIST_FILE = "CatapultTests/CatapultTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		847DB4E318A9C0B1006A8C8F /* Build configuration list for PBXProject "Catapult" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				847DB50918A9C0B1006A8C8F /* Debug */,
+				847DB50A18A9C0B1006A8C8F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		847DB50B18A9C0B1006A8C8F /* Build configuration list for PBXNativeTarget "Catapult" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				847DB50C18A9C0B1006A8C8F /* Debug */,
+				847DB50D18A9C0B1006A8C8F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		847DB50E18A9C0B1006A8C8F /* Build configuration list for PBXNativeTarget "CatapultTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				847DB50F18A9C0B1006A8C8F /* Debug */,
+				847DB51018A9C0B1006A8C8F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 847DB4E018A9C0B1006A8C8F /* Project object */;
+}
