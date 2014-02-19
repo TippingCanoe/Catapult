@@ -10,9 +10,6 @@
 #import <NSString+UrlEncode.h>
 
 @implementation CWhatsAppTarget
-+ (CatapultTargetType)targetType{
-    return CatapultTargetTypeText;
-}
 
 + (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
     NSString *message = payload.text;
@@ -31,7 +28,11 @@
     return NSLocalizedString(@"WhatsApp", nil);
 }
 
-+ (BOOL)canHandle{
++ (BOOL)canHandlePayload:(CatapultPayload *)payload{
+    return payload.targetType & CatapultTargetTypeText;
+}
+
++ (BOOL)isAvailable{
     return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"whatsapp://"]];
 }
 

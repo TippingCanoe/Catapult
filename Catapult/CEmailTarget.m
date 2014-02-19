@@ -24,10 +24,6 @@ static CEmailTarget *_shared;
     [[controller presentingViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 
-+ (CatapultTargetType)targetType{
-    return CatapultTargetTypeText;
-}
-
 + (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
     
     _shared = [[CEmailTarget alloc] init];
@@ -57,8 +53,12 @@ static CEmailTarget *_shared;
     return NSLocalizedString(@"Email", nil);
 }
 
-+ (BOOL)canHandle{
++ (BOOL)isAvailable{
     return [MFMailComposeViewController canSendMail];
+}
+
++ (BOOL)canHandlePayload:(CatapultPayload *)payload{
+    return payload.targetType & CatapultTargetTypeText;
 }
 
 + (void)handleURL:(NSURL *)url fromSourceApplication:(NSString *)source{

@@ -15,10 +15,6 @@ static NSURL *_successURL;
 static NSURL *_cancelURL;
 static CGmailTarget *_shared;
 
-+ (CatapultTargetType)targetType{
-    return CatapultTargetTypeText;
-}
-
 + (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
     
     _shared = [[CGmailTarget alloc] init];
@@ -56,8 +52,12 @@ static CGmailTarget *_shared;
     return NSLocalizedString(@"Gmail", nil);
 }
 
-+ (BOOL)canHandle{
++ (BOOL)isAvailable{
     return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"googlegmail://"]];
+}
+
++ (BOOL)canHandlePayload:(CatapultPayload *)payload{
+    return payload.targetType & CatapultTargetTypeText;
 }
 
 + (void)setSuccessURL:(NSURL *)success{

@@ -14,27 +14,29 @@
 static NSString *_pinterestId;
 static CPinterestTarget *_shared;
 
-+ (CatapultTargetType)targetType{
-    return CatapultTargetTypeURL | CatapultTargetTypeText | CatapultTargetTypeImageURL;
-}
-
 + (void)setPinterestID:(NSString *)string{
     _pinterestId = string;
 }
 
 + (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
-    if (_pinterestId) {
-        
-        _shared = [[CPinterestTarget alloc] init];
-        _shared.complete = complete;
-        
-        Pinterest *pinterest = [[Pinterest alloc] initWithClientId:_pinterestId];
-        [pinterest createPinWithImageURL:payload.imageURL
-                               sourceURL:payload.url
-                             description:payload.text];
+    
+    
+    if ([payload.url.host isEqualToString:@"pinterest"]) {
+        [[UIApplication sharedApplication] openURL:payload.url];
     }else{
-        if (complete) {
-            complete(NO);
+        if (_pinterestId) {
+            
+            _shared = [[CPinterestTarget alloc] init];
+            _shared.complete = complete;
+            
+            Pinterest *pinterest = [[Pinterest alloc] initWithClientId:_pinterestId];
+            [pinterest createPinWithImageURL:payload.imageURL
+                                   sourceURL:payload.url
+                                 description:payload.text];
+        }else{
+            if (complete) {
+                complete(NO);
+            }
         }
     }
 }
@@ -43,7 +45,16 @@ static CPinterestTarget *_shared;
     return NSLocalizedString(@"Pinterest", nil);
 }
 
-+ (BOOL)canHandle{
++ (BOOL)canHandlePayload:(CatapultPayload *)payload{
+    
+    if ([payload.url.host isEqualToString:@"pinterest"]) {
+        return YES;
+    }
+    
+    return payload.targetType & CatapultTargetTypeURL & CatapultTargetTypeText & CatapultTargetTypeImageURL;
+}
+
++ (BOOL)isAvailable{
     return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"pinterest://"]];
 }
 

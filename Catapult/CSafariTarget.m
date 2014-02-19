@@ -10,9 +10,6 @@
 #import "CSafariTarget.h"
 
 @implementation CSafariTarget
-+ (CatapultTargetType)targetType{
-    return CatapultTargetTypeURL;
-}
 
 + (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
     
@@ -26,8 +23,12 @@
     return NSLocalizedString(@"Safari", nil);
 }
 
-+ (BOOL)canHandle{
++ (BOOL)isAvailable{
     return YES;
+}
+
++ (BOOL)canHandlePayload:(CatapultPayload *)payload{
+    return payload.targetType & CatapultTargetTypeURL;
 }
 
 + (void)handleURL:(NSURL *)url fromSourceApplication:(NSString *)source{

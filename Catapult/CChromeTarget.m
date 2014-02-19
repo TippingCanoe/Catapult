@@ -14,10 +14,6 @@ static NSURL *_successURL;
 static NSURL *_cancelURL;
 static CChromeTarget *_shared;
 
-+ (CatapultTargetType)targetType{
-    return CatapultTargetTypeURL;
-}
-
 + (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
     
     _shared = [[CChromeTarget alloc] init];
@@ -52,8 +48,12 @@ static CChromeTarget *_shared;
     return NSLocalizedString(@"Chrome", nil);
 }
 
-+ (BOOL)canHandle{
++ (BOOL)isAvailable{
     return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"googlechrome-x-callback://"]];
+}
+
++ (BOOL)canHandlePayload:(CatapultPayload *)payload{
+    return payload.targetType & CatapultTargetTypeURL;
 }
 
 + (void)setSuccessURL:(NSURL *)success{

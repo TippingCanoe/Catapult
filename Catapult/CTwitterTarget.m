@@ -10,9 +10,6 @@
 #import <Social/Social.h>
 
 @implementation CTwitterTarget
-+ (CatapultTargetType)targetType{
-    return CatapultTargetTypeText;
-}
 
 + (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
     SLComposeViewController *tweetSheet = [SLComposeViewController
@@ -47,7 +44,11 @@
     return NSLocalizedString(@"Twitter", nil);
 }
 
-+ (BOOL)canHandle{
++ (BOOL)canHandlePayload:(CatapultPayload *)payload{
+    return payload.targetType & CatapultTargetTypeText;
+}
+
++ (BOOL)isAvailable{
     return YES;
 }
 

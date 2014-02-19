@@ -12,82 +12,82 @@
 
 @implementation CFacebookTarget
 
-
-+ (CatapultTargetType)targetType{
-    return CatapultTargetTypeText;
-}
-
 + (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
-    FBShareDialogParams *params = [[FBShareDialogParams alloc] init];
-    params.link = payload.url;
-    params.name = [options objectForKey:kCFacebookTargetTitle];
-    params.caption = [options objectForKey:kCFacebookTargetSubtitle];
-    params.picture = payload.imageURL;
-    params.description = payload.text;
     
-    // If the Facebook app is installed and we can present the share dialog
-    if ([FBDialogs canPresentShareDialogWithParams:params]) {
-        // Present the share dialog
-        [FBDialogs presentShareDialogWithLink:params.link
-                                         name:params.name
-                                      caption:params.caption
-                                  description:params.description
-                                      picture:params.picture
-                                  clientState:nil
-                                      handler:^(FBAppCall *call, NSDictionary *results, NSError *error) {
-                                          if (complete) {
-                                              if(error) {
-                                                  complete(NO);
-                                              } else {
-                                                  if ([[results objectForKey:@"completionGesture"] isEqualToString:@"cancel"]) {
+    if ([payload.url.host isEqualToString:@"facebook"]) {
+        [[UIApplication sharedApplication] openURL:payload.url];
+    }else{
+        FBShareDialogParams *params = [[FBShareDialogParams alloc] init];
+        params.link = payload.url;
+        params.name = [options objectForKey:kCFacebookTargetTitle];
+        params.caption = [options objectForKey:kCFacebookTargetSubtitle];
+        params.picture = payload.imageURL;
+        params.description = payload.text;
+        
+        // If the Facebook app is installed and we can present the share dialog
+        if ([FBDialogs canPresentShareDialogWithParams:params]) {
+            // Present the share dialog
+            [FBDialogs presentShareDialogWithLink:params.link
+                                             name:params.name
+                                          caption:params.caption
+                                      description:params.description
+                                          picture:params.picture
+                                      clientState:nil
+                                          handler:^(FBAppCall *call, NSDictionary *results, NSError *error) {
+                                              if (complete) {
+                                                  if(error) {
                                                       complete(NO);
-                                                  }else{
-                                                      complete(YES);
+                                                  } else {
+                                                      if ([[results objectForKey:@"completionGesture"] isEqualToString:@"cancel"]) {
+                                                          complete(NO);
+                                                      }else{
+                                                          complete(YES);
+                                                      }
                                                   }
                                               }
-                                          }
-                                      }];
-    } else {
-        // Present the feed dialog
-        NSMutableDictionary *paramDictionary = [[NSMutableDictionary alloc] init];
-        if (params.name) {
-            [paramDictionary setObject:params.name forKey:@"name"];
-        }
-        if (params.link) {
-            [paramDictionary setObject:params.link forKey:@"link"];
-        }
-        if (params.caption) {
-            [paramDictionary setObject:params.name forKey:@"caption"];
-        }
-        if (params.description) {
-            [paramDictionary setObject:params.description forKey:@"description"];
-        }
-        if (params.picture) {
-            [paramDictionary setObject:params.picture forKey:@"picture"];
-        }
-        
-        // Show the feed dialog
-        [FBWebDialogs presentFeedDialogModallyWithSession:nil
-                                               parameters:paramDictionary
-                                                  handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
-                                                      if (complete) {
-                                                          if (error) {
-                                                              complete(NO);
-                                                          } else {
-                                                              if (result == FBWebDialogResultDialogNotCompleted) {
+                                          }];
+        } else {
+            // Present the feed dialog
+            NSMutableDictionary *paramDictionary = [[NSMutableDictionary alloc] init];
+            if (params.name) {
+                [paramDictionary setObject:params.name forKey:@"name"];
+            }
+            if (params.link) {
+                [paramDictionary setObject:params.link forKey:@"link"];
+            }
+            if (params.caption) {
+                [paramDictionary setObject:params.name forKey:@"caption"];
+            }
+            if (params.description) {
+                [paramDictionary setObject:params.description forKey:@"description"];
+            }
+            if (params.picture) {
+                [paramDictionary setObject:params.picture forKey:@"picture"];
+            }
+            
+            // Show the feed dialog
+            [FBWebDialogs presentFeedDialogModallyWithSession:nil
+                                                   parameters:paramDictionary
+                                                      handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
+                                                          if (complete) {
+                                                              if (error) {
                                                                   complete(NO);
                                                               } else {
-                                                                  NSDictionary *urlParams = [self parseURLParams:[resultURL query]];
-                                                                  
-                                                                  if (![urlParams valueForKey:@"post_id"]) {
+                                                                  if (result == FBWebDialogResultDialogNotCompleted) {
                                                                       complete(NO);
                                                                   } else {
-                                                                      complete(YES);
+                                                                      NSDictionary *urlParams = [self parseURLParams:[resultURL query]];
+                                                                      
+                                                                      if (![urlParams valueForKey:@"post_id"]) {
+                                                                          complete(NO);
+                                                                      } else {
+                                                                          complete(YES);
+                                                                      }
                                                                   }
                                                               }
                                                           }
-                                                      }
-                                                  }];
+                                                      }];
+        }
     }
     
 }
@@ -104,7 +104,14 @@
     return params;
 }
 
-+ (BOOL)canHandle{
++ (BOOL)canHandlePayload:(CatapultPayload *)payload{
+    if ([payload.url.host isEqualToString:@"facebook"]) {
+        return YES;
+    }
+    return payload.targetType & CatapultTargetTypeText;
+}
+
++ (BOOL)isAvailable{
     return YES;
 }
 

@@ -24,10 +24,6 @@ static CSMSTarget *_shared;
     [[controller presentingViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 
-+ (CatapultTargetType)targetType{
-    return CatapultTargetTypeText;
-}
-
 + (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
     
     _shared = [[CSMSTarget alloc] init];
@@ -47,8 +43,13 @@ static CSMSTarget *_shared;
     return NSLocalizedString(@"SMS", nil);
 }
 
-+ (BOOL)canHandle{
-    return [MFMessageComposeViewController canSendText];
+
++ (BOOL)isAvailable{
+    return YES;
+}
+
++ (BOOL)canHandlePayload:(CatapultPayload *)payload{
+    return payload.targetType & CatapultTargetTypeText;
 }
 
 + (void)handleURL:(NSURL *)url fromSourceApplication:(NSString *)source{

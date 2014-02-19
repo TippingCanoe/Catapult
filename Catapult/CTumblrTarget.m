@@ -15,19 +15,20 @@ static NSURL *_successURL;
 static NSURL *_cancelURL;
 static CTumblrTarget *_shared;
 
-+ (CatapultTargetType)targetType{
-    return CatapultTargetTypeText;
-}
-
 + (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
     
-    _shared = [[CTumblrTarget alloc] init];
-    _shared.complete = complete;
-    
-    if (payload.url) {
-        [TMTumblrAppClient createLinkPost:payload.text URLString:payload.url.absoluteString description:payload.text tags:@[] success:_successURL cancel:_cancelURL];
+    if ([payload.url.host isEqualToString:@"tumblr"]) {
+        [[UIApplication sharedApplication] openURL:payload.url];
     }else{
-        [TMTumblrAppClient createTextPost:payload.text body:payload.text tags:@[] success:_successURL cancel:_cancelURL];
+    
+        _shared = [[CTumblrTarget alloc] init];
+        _shared.complete = complete;
+        
+        if (payload.url) {
+            [TMTumblrAppClient createLinkPost:payload.text URLString:payload.url.absoluteString description:payload.text tags:@[] success:_successURL cancel:_cancelURL];
+        }else{
+            [TMTumblrAppClient createTextPost:payload.text body:payload.text tags:@[] success:_successURL cancel:_cancelURL];
+        }
     }
 }
 
@@ -35,8 +36,15 @@ static CTumblrTarget *_shared;
     return NSLocalizedString(@"Tumblr", nil);
 }
 
-+ (BOOL)canHandle{
++ (BOOL)isAvailable{
     return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tumblr://"]];
+}
+
++ (BOOL)canHandlePayload:(CatapultPayload *)payload{
+    if ([payload.url.host isEqualToString:@"tumblr"]) {
+        return YES;
+    }
+    return payload.targetType & CatapultTargetTypeText;
 }
 
 + (void)setSuccessURL:(NSURL *)success{
