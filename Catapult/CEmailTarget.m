@@ -44,6 +44,11 @@ static CEmailTarget *_shared;
     mailer.modalPresentationStyle = UIModalPresentationPageSheet;
     [mailer setSubject:payload.text];
     
+    if ([options objectForKey:kCatapultRecipientEmail]) {
+        NSString *email = [options objectForKey:kCatapultRecipientEmail];
+        [mailer setToRecipients:@[email]];
+    }
+    
     [mailer setMessageBody:body isHTML:NO];
     [vc presentViewController:mailer animated:YES completion:nil];
 }

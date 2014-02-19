@@ -10,5 +10,7 @@
 #import "Catapult.h"
 
 @interface CGmailTarget : NSObject <CatapultTarget>
-
+@property (nonatomic,copy) void(^complete)(BOOL complete);
++ (void)setSuccessURL:(NSURL *)success;
++ (void)setCancelURL:(NSURL *)cancel;
 @end

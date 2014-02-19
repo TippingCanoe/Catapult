@@ -61,11 +61,15 @@ static Catapult *_shared;
 - (NSArray *)targetsFortargetType:(CatapultTargetType)targetType{
     NSMutableArray *array = [[NSMutableArray alloc] init];
     for (NSObject<CatapultTarget> *target in targetArray) {
-        if ((([target.class targetType] ^ targetType) & targetType) || targetType == [target.class targetType]) {
+        if ([self.class target:target supportsTargetType:targetType]) {
             [array addObject:target];
         }
     }
     return array;
+}
+
++ (BOOL)target:(NSObject<CatapultTarget>*)target supportsTargetType:(CatapultTargetType)targetType{
+    return (([target.class targetType] ^ targetType) & targetType) || targetType == [target.class targetType];
 }
 
 + (NSArray *)targetNameArrayFortargetArray:(NSArray *)targets{
@@ -82,6 +86,14 @@ static Catapult *_shared;
                  andComplete:(void(^)(BOOL success, Class<CatapultTarget> selectedtarget))complete{
     
     NSArray *targets = [self targetsFortargetType:payload.targetType];
+    [self showActionSheetForTargets:targets fromViewController:viewController andOptions:dictionary andPayload:payload andComplete:complete];
+}
+
+- (void)showActionSheetForTargets:(NSArray *)targets
+               fromViewController:(UIViewController *)viewController
+                       andOptions:(NSDictionary *)dictionary
+                       andPayload:(CatapultPayload *)payload
+                      andComplete:(void(^)(BOOL success, Class<CatapultTarget> selectedtarget))complete{
     
     [OHActionSheet showSheetInView:viewController.view
                              title:[dictionary objectForKey:kCatapultTitle]?[dictionary objectForKey:kCatapultTitle]:NSLocalizedString(@"Share", nil)
@@ -108,6 +120,20 @@ static Catapult *_shared;
              }];
          }
      }];
+}
+
+- (void)takeAimWithPayload:(CatapultPayload*)payload
+        fromViewController:(UIViewController *)viewController
+               withOptions:(NSDictionary *)dictionary
+        andSpecificTargets:(NSArray *)targets
+               andComplete:(void(^)(BOOL success, Class<CatapultTarget> selectedtarget))complete{
+    NSMutableArray *supportedTargets = [[NSMutableArray alloc] initWithArray:targets];
+    for (NSObject<CatapultTarget> *target in targets) {
+        if (![self.class target:target supportsTargetType:payload.targetType] || ![target.class canHandle]) {
+            [supportedTargets removeObject:target];
+        }
+    }
+    [self showActionSheetForTargets:supportedTargets fromViewController:viewController andOptions:dictionary andPayload:payload andComplete:complete];
 }
 
 - (void)handleURL:(NSURL *)url fromSourceApplication:(NSString *)source{
