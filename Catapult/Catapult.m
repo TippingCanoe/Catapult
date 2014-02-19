@@ -95,31 +95,41 @@ static Catapult *_shared;
                        andPayload:(CatapultPayload *)payload
                       andComplete:(void(^)(BOOL success, Class<CatapultTarget> selectedtarget))complete{
     
-    [OHActionSheet showSheetInView:viewController.view
-                             title:[dictionary objectForKey:kCatapultTitle]?[dictionary objectForKey:kCatapultTitle]:NSLocalizedString(@"Share", nil)
-                 cancelButtonTitle:[dictionary objectForKey:kCatapultCancel]?[dictionary objectForKey:kCatapultCancel]:NSLocalizedString(@"Cancel", nil)
-            destructiveButtonTitle:nil
-                 otherButtonTitles:[self.class targetNameArrayFortargetArray:targets]
-                        completion:^(OHActionSheet *sheet, NSInteger buttonIndex)
-     {
-         if (buttonIndex == sheet.cancelButtonIndex) {
-             if (complete) {
-                 complete(NO,nil);
-             }
-         } else if (buttonIndex == sheet.destructiveButtonIndex) {
-             if (complete) {
-                 complete(NO,nil);
-             }
-         } else {
-             NSObject<CatapultTarget> *target = [targets objectAtIndex:buttonIndex];
-             lastTarget = target.class;
-             [target.class launchPayload:payload withOptions:dictionary fromViewController:viewController andComplete:^(BOOL success){
+    if (targets.count == 1) {
+        NSObject<CatapultTarget> *target = [targets objectAtIndex:0];
+        lastTarget = target.class;
+        [target.class launchPayload:payload withOptions:dictionary fromViewController:viewController andComplete:^(BOOL success){
+            if (complete) {
+                complete(success,target.class);
+            }
+        }];
+    }else if(targets.count > 1){
+        [OHActionSheet showSheetInView:viewController.view
+                                 title:[dictionary objectForKey:kCatapultTitle]?[dictionary objectForKey:kCatapultTitle]:NSLocalizedString(@"Share", nil)
+                     cancelButtonTitle:[dictionary objectForKey:kCatapultCancel]?[dictionary objectForKey:kCatapultCancel]:NSLocalizedString(@"Cancel", nil)
+                destructiveButtonTitle:nil
+                     otherButtonTitles:[self.class targetNameArrayFortargetArray:targets]
+                            completion:^(OHActionSheet *sheet, NSInteger buttonIndex)
+         {
+             if (buttonIndex == sheet.cancelButtonIndex) {
                  if (complete) {
-                     complete(success,target.class);
+                     complete(NO,nil);
                  }
-             }];
-         }
-     }];
+             } else if (buttonIndex == sheet.destructiveButtonIndex) {
+                 if (complete) {
+                     complete(NO,nil);
+                 }
+             } else {
+                 NSObject<CatapultTarget> *target = [targets objectAtIndex:buttonIndex];
+                 lastTarget = target.class;
+                 [target.class launchPayload:payload withOptions:dictionary fromViewController:viewController andComplete:^(BOOL success){
+                     if (complete) {
+                         complete(success,target.class);
+                     }
+                 }];
+             }
+         }];
+    }
 }
 
 - (void)takeAimWithPayload:(CatapultPayload*)payload
