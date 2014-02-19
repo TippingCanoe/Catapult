@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0FD3BFF2E0C44C19940033E7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 370672B8813F48E288CCDF01 /* libPods.a */; };
+		840B3D0918B5552300B99368 /* CChromeTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B3D0818B5552300B99368 /* CChromeTarget.m */; };
+		842597C718B5704200E7B40D /* CSafariTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 842597C618B5704200E7B40D /* CSafariTarget.m */; };
 		847DB4EC18A9C0B1006A8C8F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847DB4EB18A9C0B1006A8C8F /* Foundation.framework */; };
 		847DB4F118A9C0B1006A8C8F /* Catapult.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 847DB4F018A9C0B1006A8C8F /* Catapult.h */; };
 		847DB4F318A9C0B1006A8C8F /* Catapult.m in Sources */ = {isa = PBXBuildFile; fileRef = 847DB4F218A9C0B1006A8C8F /* Catapult.m */; };
@@ -54,6 +56,10 @@
 		29955DC8D5314E5CA15B1239 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		370672B8813F48E288CCDF01 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8406B81C18A9D3FF00F48F74 /* Catapult.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Catapult.podspec; sourceTree = "<group>"; };
+		840B3D0718B5552300B99368 /* CChromeTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CChromeTarget.h; sourceTree = "<group>"; };
+		840B3D0818B5552300B99368 /* CChromeTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CChromeTarget.m; sourceTree = "<group>"; };
+		842597C518B5704200E7B40D /* CSafariTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSafariTarget.h; sourceTree = "<group>"; };
+		842597C618B5704200E7B40D /* CSafariTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSafariTarget.m; sourceTree = "<group>"; };
 		847DB4E818A9C0B1006A8C8F /* libCatapult.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCatapult.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		847DB4EB18A9C0B1006A8C8F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		847DB4EF18A9C0B1006A8C8F /* Catapult-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Catapult-Prefix.pch"; sourceTree = "<group>"; };
@@ -195,6 +201,10 @@
 				84B7ECBC18AAA1AC00A4730A /* CEmailTarget.m */,
 				84CCF63518AAE00C00A6B46F /* CGmailTarget.h */,
 				84CCF63618AAE00C00A6B46F /* CGmailTarget.m */,
+				840B3D0718B5552300B99368 /* CChromeTarget.h */,
+				840B3D0818B5552300B99368 /* CChromeTarget.m */,
+				842597C518B5704200E7B40D /* CSafariTarget.h */,
+				842597C618B5704200E7B40D /* CSafariTarget.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -322,7 +332,9 @@
 				84C50BDD18A9F18D003619F4 /* CSMSTarget.m in Sources */,
 				84B7ECBD18AAA1AC00A4730A /* CEmailTarget.m in Sources */,
 				84C50BE018A9F1C5003619F4 /* CTumblrTarget.m in Sources */,
+				842597C718B5704200E7B40D /* CSafariTarget.m in Sources */,
 				84C50BD118A9EFF3003619F4 /* CTwitterTarget.m in Sources */,
+				840B3D0918B5552300B99368 /* CChromeTarget.m in Sources */,
 				84C50BCE18A9EF67003619F4 /* CFacebookTarget.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
