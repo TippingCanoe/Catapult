@@ -8,6 +8,7 @@
 
 #import "CTumblrTarget.h"
 #import <TMTumblrAppClient.h>
+#import "NSObject+URLScheme.h"
 
 @implementation CTumblrTarget
 
@@ -17,10 +18,10 @@ static CTumblrTarget *_shared;
 
 + (void)launchPayload:(CatapultPayload *)payload fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
     
-    if ([payload.url.host isEqualToString:@"tumblr"]) {
-        [[UIApplication sharedApplication] openURL:payload.url];
+    NSString *tumblrBlog = payload.additionalOptions[kCatapultTumblrBlogName];
+    if (tumblrBlog) {
+        [TMTumblrAppClient viewBlog:tumblrBlog];
     }else{
-    
         _shared = [[CTumblrTarget alloc] init];
         _shared.complete = complete;
         
@@ -41,7 +42,7 @@ static CTumblrTarget *_shared;
 }
 
 + (BOOL)canHandlePayload:(CatapultPayload *)payload{
-    if ([payload.url.host isEqualToString:@"tumblr"]) {
+    if (payload.additionalOptions[kCatapultTumblrBlogName]) {
         return YES;
     }
     return payload.targetType & CatapultTargetTypeText;

@@ -9,13 +9,18 @@
 #import "CFacebookTarget.h"
 #import <FBAppCall.h>
 #import <Facebook.h>
+#import "NSObject+URLScheme.h"
 
 @implementation CFacebookTarget
 
 + (void)launchPayload:(CatapultPayload *)payload fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
     
-    if ([payload.url.host isEqualToString:@"facebook"]) {
-        [[UIApplication sharedApplication] openURL:payload.url];
+    NSURL *facebookURL = [payload.additionalOptions[kCatapultAlternativeURL] urlMatchingScheme:@"fb"];
+    if (facebookURL == nil) {
+        facebookURL = [payload.url urlMatchingScheme:@"fb"];
+    }
+    if (facebookURL) {
+        [[UIApplication sharedApplication] openURL:facebookURL];
     }else{
         FBShareDialogParams *params = [[FBShareDialogParams alloc] init];
         params.link = payload.url;
@@ -105,7 +110,9 @@
 }
 
 + (BOOL)canHandlePayload:(CatapultPayload *)payload{
-    if ([payload.url.host isEqualToString:@"facebook"]) {
+    if ([payload.additionalOptions[kCatapultAlternativeURL] urlMatchingScheme:@"fb"]) {
+        return YES;
+    }else if([payload.url urlMatchingScheme:@"fb"]){
         return YES;
     }
     return payload.targetType & CatapultTargetTypeText;

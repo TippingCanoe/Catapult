@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Catapult.h"
+#define kCatapultTumblrBlogName @"kCatapultTumblrBlogName"
 
 @interface CTumblrTarget : NSObject <CatapultTarget>
 @property (nonatomic,copy) void(^complete)(BOOL complete);
