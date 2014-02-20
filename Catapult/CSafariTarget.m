@@ -11,7 +11,7 @@
 
 @implementation CSafariTarget
 
-+ (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
++ (void)launchPayload:(CatapultPayload *)payload fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
     
     [[UIApplication sharedApplication] openURL:payload.url];
     if (complete) {

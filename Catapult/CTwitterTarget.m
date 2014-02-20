@@ -11,7 +11,7 @@
 
 @implementation CTwitterTarget
 
-+ (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
++ (void)launchPayload:(CatapultPayload *)payload fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
     SLComposeViewController *tweetSheet = [SLComposeViewController
                                            composeViewControllerForServiceType:
                                            SLServiceTypeTwitter];

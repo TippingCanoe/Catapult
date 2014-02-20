@@ -72,44 +72,41 @@ static Catapult *_shared;
 
 - (void)takeAimWithPayload:(CatapultPayload*)payload
           fromViewController:(UIViewController *)viewController
-                 withOptions:(NSDictionary *)dictionary
                  andComplete:(void(^)(BOOL success, Class<CatapultTarget> selectedtarget))complete{
     
     NSArray *targets = [self targetsThatHandlePayload:payload fromArray:targetArray];
-    [self showActionSheetForTargets:targets fromViewController:viewController andOptions:dictionary andPayload:payload andComplete:complete];
+    [self showActionSheetForTargets:targets fromViewController:viewController andPayload:payload andComplete:complete];
 }
 
 - (void)takeAimWithPayload:(CatapultPayload*)payload
         fromViewController:(UIViewController *)viewController
-               withOptions:(NSDictionary *)dictionary
         andSpecificTargets:(NSArray *)targets
                andComplete:(void(^)(BOOL success, Class<CatapultTarget> selectedtarget))complete{
     
     targets = [self targetsThatHandlePayload:payload fromArray:targets];
     
-    [self showActionSheetForTargets:targets fromViewController:viewController andOptions:dictionary andPayload:payload andComplete:complete];
+    [self showActionSheetForTargets:targets fromViewController:viewController andPayload:payload andComplete:complete];
 }
 
 
 
 - (void)showActionSheetForTargets:(NSArray *)targets
                fromViewController:(UIViewController *)viewController
-                       andOptions:(NSDictionary *)dictionary
                        andPayload:(CatapultPayload *)payload
                       andComplete:(void(^)(BOOL success, Class<CatapultTarget> selectedtarget))complete{
     
     if (targets.count == 1) {
         NSObject<CatapultTarget> *target = [targets objectAtIndex:0];
         lastTarget = target.class;
-        [target.class launchPayload:payload withOptions:dictionary fromViewController:viewController andComplete:^(BOOL success){
+        [target.class launchPayload:payload fromViewController:viewController andComplete:^(BOOL success){
             if (complete) {
                 complete(success,target.class);
             }
         }];
     }else if(targets.count > 1){
         [OHActionSheet showSheetInView:viewController.view
-                                 title:[dictionary objectForKey:kCatapultTitle]?[dictionary objectForKey:kCatapultTitle]:NSLocalizedString(@"Share", nil)
-                     cancelButtonTitle:[dictionary objectForKey:kCatapultCancel]?[dictionary objectForKey:kCatapultCancel]:NSLocalizedString(@"Cancel", nil)
+                                 title:[payload.additionalOptions objectForKey:kCatapultTitle]?[payload.additionalOptions objectForKey:kCatapultTitle]:NSLocalizedString(@"Share", nil)
+                     cancelButtonTitle:[payload.additionalOptions objectForKey:kCatapultCancel]?[payload.additionalOptions objectForKey:kCatapultCancel]:NSLocalizedString(@"Cancel", nil)
                 destructiveButtonTitle:nil
                      otherButtonTitles:[self.class targetNameArrayForTargetArray:targets]
                             completion:^(OHActionSheet *sheet, NSInteger buttonIndex)
@@ -125,7 +122,7 @@ static Catapult *_shared;
              } else {
                  NSObject<CatapultTarget> *target = [targets objectAtIndex:buttonIndex];
                  lastTarget = target.class;
-                 [target.class launchPayload:payload withOptions:dictionary fromViewController:viewController andComplete:^(BOOL success){
+                 [target.class launchPayload:payload fromViewController:viewController andComplete:^(BOOL success){
                      if (complete) {
                          complete(success,target.class);
                      }

@@ -15,7 +15,7 @@ static NSURL *_successURL;
 static NSURL *_cancelURL;
 static CGmailTarget *_shared;
 
-+ (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
++ (void)launchPayload:(CatapultPayload *)payload fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
     
     _shared = [[CGmailTarget alloc] init];
     _shared.complete = complete;
@@ -26,8 +26,8 @@ static CGmailTarget *_shared;
     }
     NSString *urlString = [NSString stringWithFormat:@"googlegmail-x-callback://x-callback-url/co?subject=%@&body=%@",[payload.text urlEncode],[message urlEncode]];
     
-    if ([options objectForKey:kCatapultRecipientEmail]) {
-        NSString *email = [options objectForKey:kCatapultRecipientEmail];
+    if ([payload.additionalOptions objectForKey:kCatapultRecipientEmail]) {
+        NSString *email = [payload.additionalOptions objectForKey:kCatapultRecipientEmail];
         urlString = [urlString stringByAppendingFormat:@"&to=%@",[email urlEncode]];
     }
     if (_successURL) {

@@ -11,7 +11,7 @@
 
 @implementation CWhatsAppTarget
 
-+ (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
++ (void)launchPayload:(CatapultPayload *)payload fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
     NSString *message = payload.text;
     if (payload.url) {
         message = [message stringByAppendingFormat:@" %@",payload.url.absoluteString];

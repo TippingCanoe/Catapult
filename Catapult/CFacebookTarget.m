@@ -12,15 +12,15 @@
 
 @implementation CFacebookTarget
 
-+ (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
++ (void)launchPayload:(CatapultPayload *)payload fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
     
     if ([payload.url.host isEqualToString:@"facebook"]) {
         [[UIApplication sharedApplication] openURL:payload.url];
     }else{
         FBShareDialogParams *params = [[FBShareDialogParams alloc] init];
         params.link = payload.url;
-        params.name = [options objectForKey:kCFacebookTargetTitle];
-        params.caption = [options objectForKey:kCFacebookTargetSubtitle];
+        params.name = [payload.additionalOptions objectForKey:kCFacebookTargetTitle];
+        params.caption = [payload.additionalOptions objectForKey:kCFacebookTargetSubtitle];
         params.picture = payload.imageURL;
         params.description = payload.text;
         

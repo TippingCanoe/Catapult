@@ -24,7 +24,7 @@ static CEmailTarget *_shared;
     [[controller presentingViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 
-+ (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
++ (void)launchPayload:(CatapultPayload *)payload fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
     
     _shared = [[CEmailTarget alloc] init];
     _shared.complete = complete;
@@ -40,8 +40,8 @@ static CEmailTarget *_shared;
     mailer.modalPresentationStyle = UIModalPresentationPageSheet;
     [mailer setSubject:payload.text];
     
-    if ([options objectForKey:kCatapultRecipientEmail]) {
-        NSString *email = [options objectForKey:kCatapultRecipientEmail];
+    if ([payload.additionalOptions objectForKey:kCatapultRecipientEmail]) {
+        NSString *email = [payload.additionalOptions objectForKey:kCatapultRecipientEmail];
         [mailer setToRecipients:@[email]];
     }
     

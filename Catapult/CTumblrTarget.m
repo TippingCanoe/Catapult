@@ -15,7 +15,7 @@ static NSURL *_successURL;
 static NSURL *_cancelURL;
 static CTumblrTarget *_shared;
 
-+ (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
++ (void)launchPayload:(CatapultPayload *)payload fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
     
     if ([payload.url.host isEqualToString:@"tumblr"]) {
         [[UIApplication sharedApplication] openURL:payload.url];

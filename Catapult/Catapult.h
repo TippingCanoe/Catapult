@@ -11,8 +11,8 @@
 
 #define kCatapultTitle @"kCatapultTitle"
 #define kCatapultCancel @"kCatapultCancel"
-
 #define kCatapultRecipientEmail @"kCatapultRecipientEmail"
+#define kCatapultAlternativeURL @"kCatapultAlternativeURL"
 
 typedef NS_OPTIONS(NSUInteger, CatapultTargetType) {
     CatapultTargetTypeText                = 1 << 0,
@@ -29,13 +29,14 @@ typedef NS_OPTIONS(NSUInteger, CatapultTargetType) {
 @property (nonatomic,strong) NSURL *url;
 @property (nonatomic,strong) UIImage *image;
 @property (nonatomic,strong) NSURL *imageURL;
+@property (nonatomic,strong) NSDictionary *additionalOptions;
 
 - (CatapultTargetType)targetType;
 
 @end
 
 @protocol CatapultTarget <NSObject>
-+ (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete;
++ (void)launchPayload:(CatapultPayload *)payload fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete;
 + (NSString *)targetName;
 + (BOOL)canHandlePayload:(CatapultPayload *)payload;
 + (BOOL)isAvailable;
@@ -54,12 +55,10 @@ typedef NS_OPTIONS(NSUInteger, CatapultTargetType) {
 
 - (void)takeAimWithPayload:(CatapultPayload*)payload
           fromViewController:(UIViewController *)viewController
-                 withOptions:(NSDictionary *)dictionary
                  andComplete:(void(^)(BOOL success, Class<CatapultTarget> selectedtarget))complete;
 
 - (void)takeAimWithPayload:(CatapultPayload*)payload
         fromViewController:(UIViewController *)viewController
-               withOptions:(NSDictionary *)dictionary
         andSpecificTargets:(NSArray *)targets
                andComplete:(void(^)(BOOL success, Class<CatapultTarget> selectedtarget))complete;
 

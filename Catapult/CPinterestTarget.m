@@ -8,6 +8,7 @@
 
 #import "CPinterestTarget.h"
 #import <Pinterest.h>
+#import "NSObject+URLScheme.h"
 
 @implementation CPinterestTarget
 
@@ -18,11 +19,14 @@ static CPinterestTarget *_shared;
     _pinterestId = string;
 }
 
-+ (void)launchPayload:(CatapultPayload *)payload withOptions:(NSDictionary *)options fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
++ (void)launchPayload:(CatapultPayload *)payload fromViewController:(UIViewController *)vc andComplete:(void(^)(BOOL success))complete{
     
-    
-    if ([payload.url.host isEqualToString:@"pinterest"]) {
-        [[UIApplication sharedApplication] openURL:payload.url];
+    NSURL *pinterestURL = [payload.additionalOptions[kCatapultAlternativeURL] urlMatchingScheme:@"pinterest"];
+    if (pinterestURL == nil) {
+        pinterestURL = [payload.url urlMatchingScheme:@"pinterest"];
+    }
+    if (pinterestURL) {
+        [[UIApplication sharedApplication] openURL:pinterestURL];
     }else{
         if (_pinterestId) {
             
@@ -47,7 +51,9 @@ static CPinterestTarget *_shared;
 
 + (BOOL)canHandlePayload:(CatapultPayload *)payload{
     
-    if ([payload.url.host isEqualToString:@"pinterest"]) {
+    if ([payload.additionalOptions[kCatapultAlternativeURL] urlMatchingScheme:@"pinterest"]) {
+        return YES;
+    }else if([payload.url urlMatchingScheme:@"pinterest"]){
         return YES;
     }
     

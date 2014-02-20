@@ -10,6 +10,7 @@
 		0FD3BFF2E0C44C19940033E7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 370672B8813F48E288CCDF01 /* libPods.a */; };
 		840B3D0918B5552300B99368 /* CChromeTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B3D0818B5552300B99368 /* CChromeTarget.m */; };
 		842597C718B5704200E7B40D /* CSafariTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 842597C618B5704200E7B40D /* CSafariTarget.m */; };
+		842597D018B5A28900E7B40D /* NSObject+URLScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 842597CF18B5A28900E7B40D /* NSObject+URLScheme.m */; };
 		847DB4EC18A9C0B1006A8C8F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847DB4EB18A9C0B1006A8C8F /* Foundation.framework */; };
 		847DB4F118A9C0B1006A8C8F /* Catapult.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 847DB4F018A9C0B1006A8C8F /* Catapult.h */; };
 		847DB4F318A9C0B1006A8C8F /* Catapult.m in Sources */ = {isa = PBXBuildFile; fileRef = 847DB4F218A9C0B1006A8C8F /* Catapult.m */; };
@@ -60,6 +61,8 @@
 		840B3D0818B5552300B99368 /* CChromeTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CChromeTarget.m; sourceTree = "<group>"; };
 		842597C518B5704200E7B40D /* CSafariTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSafariTarget.h; sourceTree = "<group>"; };
 		842597C618B5704200E7B40D /* CSafariTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSafariTarget.m; sourceTree = "<group>"; };
+		842597CE18B5A28900E7B40D /* NSObject+URLScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+URLScheme.h"; sourceTree = "<group>"; };
+		842597CF18B5A28900E7B40D /* NSObject+URLScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+URLScheme.m"; sourceTree = "<group>"; };
 		847DB4E818A9C0B1006A8C8F /* libCatapult.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCatapult.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		847DB4EB18A9C0B1006A8C8F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		847DB4EF18A9C0B1006A8C8F /* Catapult-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Catapult-Prefix.pch"; sourceTree = "<group>"; };
@@ -148,10 +151,12 @@
 		847DB4ED18A9C0B1006A8C8F /* Catapult */ = {
 			isa = PBXGroup;
 			children = (
-				847DB51218A9CD0E006A8C8F /* Services */,
+				847DB51218A9CD0E006A8C8F /* Targets */,
 				847DB4F018A9C0B1006A8C8F /* Catapult.h */,
 				847DB4F218A9C0B1006A8C8F /* Catapult.m */,
 				847DB4EE18A9C0B1006A8C8F /* Supporting Files */,
+				842597CE18B5A28900E7B40D /* NSObject+URLScheme.h */,
+				842597CF18B5A28900E7B40D /* NSObject+URLScheme.m */,
 			);
 			path = Catapult;
 			sourceTree = "<group>";
@@ -182,7 +187,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		847DB51218A9CD0E006A8C8F /* Services */ = {
+		847DB51218A9CD0E006A8C8F /* Targets */ = {
 			isa = PBXGroup;
 			children = (
 				84C50BCC18A9EF67003619F4 /* CFacebookTarget.h */,
@@ -206,7 +211,7 @@
 				842597C518B5704200E7B40D /* CSafariTarget.h */,
 				842597C618B5704200E7B40D /* CSafariTarget.m */,
 			);
-			name = Services;
+			name = Targets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,6 +340,7 @@
 				842597C718B5704200E7B40D /* CSafariTarget.m in Sources */,
 				84C50BD118A9EFF3003619F4 /* CTwitterTarget.m in Sources */,
 				840B3D0918B5552300B99368 /* CChromeTarget.m in Sources */,
+				842597D018B5A28900E7B40D /* NSObject+URLScheme.m in Sources */,
 				84C50BCE18A9EF67003619F4 /* CFacebookTarget.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
