@@ -57,7 +57,7 @@ static CPinterestTarget *_shared;
         return YES;
     }
     
-    return payload.targetType & CatapultTargetTypeURL & CatapultTargetTypeText & CatapultTargetTypeImageURL;
+    return payload.targetType & (CatapultTargetTypeURL | CatapultTargetTypeText | CatapultTargetTypeImageURL);
 }
 
 + (BOOL)isAvailable{
