@@ -7,6 +7,7 @@
 //
 
 #import "CSMSTarget.h"
+#import <MessageUI/MFMessageComposeViewController.h>
 
 @implementation CSMSTarget
 
@@ -49,7 +50,7 @@ static CSMSTarget *_shared;
 }
 
 + (BOOL)canHandlePayload:(CatapultPayload *)payload{
-    return payload.targetType & CatapultTargetTypeText;
+    return payload.targetType & CatapultTargetTypeText && [MFMessageComposeViewController canSendText];
 }
 
 + (void)handleURL:(NSURL *)url fromSourceApplication:(NSString *)source{

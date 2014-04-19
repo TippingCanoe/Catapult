@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.license      = 'MIT'
   s.author       = { "Jeff Friesen" => "j.friesen@tippingcanoe.com" }
   s.platform     = :ios, '5.1'
-  s.source       = { :git => "git@github.com:robotafterall/Catapult.git", :tag => "0.1.21" }
+  s.source       = { :git => "git@github.com:robotafterall/Catapult.git", :tag => "0.1.22" }
   s.source_files = 'Catapult/*.{h,m}'
   s.requires_arc = true
   s.dependency 'OHActionSheet', '~> 1.0.2'
@@ -15,4 +15,5 @@ Pod::Spec.new do |s|
   s.dependency 'TMTumblrSDK', '~> 1.0.6'
   s.dependency 'Pinterest-iOS', '~> 2.3'
   s.framework = 'Social'
+  s.framework = 'MessageUI'
 end

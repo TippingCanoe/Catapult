@@ -7,6 +7,7 @@
 //
 
 #import "CEmailTarget.h"
+#import <MessageUI/MFMailComposeViewController.h>
 
 @implementation CEmailTarget
 
@@ -58,7 +59,7 @@ static CEmailTarget *_shared;
 }
 
 + (BOOL)canHandlePayload:(CatapultPayload *)payload{
-    return payload.targetType & CatapultTargetTypeText;
+    return payload.targetType & CatapultTargetTypeText && [MFMailComposeViewController canSendMail];
 }
 
 + (void)handleURL:(NSURL *)url fromSourceApplication:(NSString *)source{

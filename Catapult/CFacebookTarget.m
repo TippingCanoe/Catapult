@@ -58,7 +58,7 @@
                 [paramDictionary setObject:params.name forKey:@"name"];
             }
             if (params.link) {
-                [paramDictionary setObject:params.link forKey:@"link"];
+                [paramDictionary setObject:params.link.absoluteString forKey:@"link"];
             }
             if (params.caption) {
                 [paramDictionary setObject:params.name forKey:@"caption"];
@@ -67,7 +67,7 @@
                 [paramDictionary setObject:params.description forKey:@"description"];
             }
             if (params.picture) {
-                [paramDictionary setObject:params.picture forKey:@"picture"];
+                [paramDictionary setObject:params.picture.absoluteString forKey:@"picture"];
             }
             
             // Show the feed dialog
@@ -131,6 +131,6 @@
            sourceApplication:source
              fallbackHandler:^(FBAppCall *call) {
                  
-    }];
+             }];
 }
 @end

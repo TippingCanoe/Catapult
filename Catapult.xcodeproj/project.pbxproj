@@ -28,6 +28,8 @@
 		84C50BDD18A9F18D003619F4 /* CSMSTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50BDC18A9F18D003619F4 /* CSMSTarget.m */; };
 		84C50BE018A9F1C5003619F4 /* CTumblrTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50BDF18A9F1C5003619F4 /* CTumblrTarget.m */; };
 		84CCF63718AAE00C00A6B46F /* CGmailTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CCF63618AAE00C00A6B46F /* CGmailTarget.m */; };
+		84CEF5AA190250F1002C2132 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84CEF5A9190250F1002C2132 /* Social.framework */; };
+		84CEF5AC190250F6002C2132 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84CEF5AB190250F6002C2132 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +92,8 @@
 		84C50BDF18A9F1C5003619F4 /* CTumblrTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTumblrTarget.m; sourceTree = "<group>"; };
 		84CCF63518AAE00C00A6B46F /* CGmailTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGmailTarget.h; sourceTree = "<group>"; };
 		84CCF63618AAE00C00A6B46F /* CGmailTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGmailTarget.m; sourceTree = "<group>"; };
+		84CEF5A9190250F1002C2132 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		84CEF5AB190250F6002C2132 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84CEF5AC190250F6002C2132 /* MessageUI.framework in Frameworks */,
+				84CEF5AA190250F1002C2132 /* Social.framework in Frameworks */,
 				847DB4EC18A9C0B1006A8C8F /* Foundation.framework in Frameworks */,
 				0FD3BFF2E0C44C19940033E7 /* libPods.a in Frameworks */,
 			);
@@ -140,6 +146,8 @@
 		847DB4EA18A9C0B1006A8C8F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84CEF5AB190250F6002C2132 /* MessageUI.framework */,
+				84CEF5A9190250F1002C2132 /* Social.framework */,
 				847DB4EB18A9C0B1006A8C8F /* Foundation.framework */,
 				847DB4F918A9C0B1006A8C8F /* XCTest.framework */,
 				847DB4FC18A9C0B1006A8C8F /* UIKit.framework */,
