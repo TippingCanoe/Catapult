@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.source_files = 'Catapult/*.{h,m}'
   s.requires_arc = true
   s.dependency 'OHActionSheet', '~> 1.0.2'
-  s.dependency 'Facebook-iOS-SDK', '~> 3.12.0'
+  s.dependency 'Facebook-iOS-SDK', '> 3'
   s.dependency 'NSString-UrlEncode', '~> 1.0.0'
   s.dependency 'TMTumblrSDK', '~> 1.0.6'
   s.dependency 'Pinterest-iOS', '~> 2.3'
